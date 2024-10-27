@@ -1,6 +1,4 @@
 <template>
-  <!--<img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>-->
 
   <!-- imagem do nome + menu-->
   <header>
@@ -12,7 +10,7 @@
       <div id="barrademenu">
 
         <!--menu-->
-        <a href="" id="areadelogin">
+        <a href="" id="menu">
             <p>MENU</p>
         </a>
 
@@ -44,14 +42,14 @@
 /*cores: #D4A3C4 #A8D1E7 #FCFAF2 */
 
 P, a, a:any-link, a:visited, a:link{
-  margin: 0px;
-  color: inherit;
+  margin:0px;
+  color:inherit;
   text-decoration:none;
-  text-decoration-color: none;
+  text-decoration-color:none;
 }
 
 html{
-  padding: opx;
+  padding:0px;
 }
 
 header{
@@ -67,7 +65,7 @@ header{
   }
 
   #barrademenu{
-    background-image:linear-gradient( #b8dcef, #A8D1E7);
+    background-image: linear-gradient(#b8dcef, #A8D1E7);
     display: grid;
     grid-template-columns: 10% auto 12%;
     padding: 16px;

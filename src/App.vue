@@ -15,12 +15,12 @@
         </a>
 
         <!--barra de pesquisa-->
-        <div id="barradepesquisa">
-          pesquisar...
+        <div id="">
+          <input type="text" name="Pesquisar" id="input" value="Pesquisar">
         </div>
         
         <!--área de login-->
-        <a href="http://localhost:8081/LoginPage" id="areadelogin">
+        <a href="components/HomePage.vue" id="areadelogin">
             <p>ENTRAR</p>
         </a>
         
@@ -73,13 +73,37 @@ header{
     text-align: center;
     align-items: center;
   }
-    #barradepesquisa{
+
+  /* From Uiverse.io by shadowmurphy */ 
+  #input {
+  border: 2px solid transparent;
+  width: 30em;
+  height: 2.5em;
+  padding-left: 0.8em;
+  outline: none;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 10px;
+  transition: all 0.5s;
+  }
+
+  #input:hover,
+  #input:focus {
+  border: 2px solid #4A9DEC;
+  box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+  background-color: white;
+  }
+
+   /* #barradepesquisa{
       background-image:linear-gradient(#fcfaf241,#fcfaf253);
       margin: 0px 6% 0 6%;
       padding: 6px 6px 6px 16px;
       border-radius: 16px;
       text-align: left;
-    }
+      width: 400px;
+      background-color: #A8D1E7;
+      text-decoration: none;
+    } */
 
 
 

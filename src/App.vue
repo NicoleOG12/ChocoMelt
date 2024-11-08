@@ -7,13 +7,16 @@
           <li><router-link to="/HomePage">Home</router-link></li>
           <li><router-link to="/contactUs">Contato</router-link></li>
           <li><router-link to="/aboutUS">Sobre nós</router-link></li>
-          <li><router-link to="/LoginForm">Login</router-link></li>
+          <li><router-link to="/LoginPage">Login</router-link></li>
           <li><router-link to="/NewPage">Produtos</router-link></li>
           <li><router-link to="/NewPage">Carrinho</router-link></li>
         </ul>
       </nav>
+      
     </header>
+    
   </div>
+  <router-view></router-view>
 </template>
  
 <script>

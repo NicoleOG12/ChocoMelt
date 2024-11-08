@@ -1,87 +1,67 @@
 <template>
-  <div id="app">
-    <header class="menu">
+  <div class="chocomelt">
+    <header>
+      <h1 class="logo">CHOCOMELT</h1>
       <nav>
         <ul>
-          <li><router-link to="/HomePage">Home Page</router-link></li>
-          <li><router-link to="/contactUs">Contate-nos</router-link></li>
+          <li><router-link to="/HomePage">Home</router-link></li>
+          <li><router-link to="/contactUs">Contato</router-link></li>
           <li><router-link to="/aboutUS">Sobre nós</router-link></li>
           <li><router-link to="/LoginForm">Login</router-link></li>
-          <li><router-link to="/NewPage">NewPage</router-link></li>
-          
+          <li><router-link to="/NewPage">Produtos</router-link></li>
+          <li><router-link to="/NewPage">Carrinho</router-link></li>
         </ul>
       </nav>
     </header>
-
-    <router-view></router-view>
-  </div>
-
-  <div class="footer">
-      <footer>
-        <div>
-          <p class="copyright" >Copyright © 2024</p>
-        </div>
-      </footer>
   </div>
 </template>
-
+ 
 <script>
 export default {
-  name: 'App',
-}
+  name: 'ChocomeltHome'
+};
 </script>
-
-<style>
-#app {
-  background-image: url(https://images.app.goo.gl/tUkbf2CLc8V7gjVS6);
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ 
+<style scoped>
+.chocomelt {
+  background-color: #d1a3b8; 
   text-align: center;
-  margin-top: 60px;
-  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 30px;
 }
-
-.menu {
-  background-color: rgba(255, 255, 255, 0.8); 
-  padding: 10px; 
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-  margin-top: -50px;
+ 
+header {
+  background-image: url('');
+  background-size: cover;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
+ 
+.logo {
+  font-family: 'YourChosenFont', sans-serif;
+  font-size: 3rem;
+  color: #4a2c2a; /* Marrom para combinar com o chocolate */
+  /* text-shadow: 1px 1px 2px red, 0 0 1em rgb(166, 173, 255), 0 0 0.2em blue; */
 
-.menu nav ul {
-  list-style-type: none;
+}
+ 
+nav ul {
+  list-style: none;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
-
-.menu nav ul li {
-  display: inline;
-  margin-right: 15px; 
-}
-
-.menu nav ul li a {
+ 
+nav ul li a {
+  font-family: 'YourChosenFont', sans-serif;
+  font-size: 1.2rem;
+  color: #4a2c2a;
   text-decoration: none;
-  color: #000000; 
-  font-family: 'Allura';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/allura/v21/9oRPNYsQpS4zjuA_iwgW.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  transition: color 0.3s ease;
 }
-
-.footer {
-  padding: 20px 0;
-  background-color:#ffffff;
-  color:#000000;
-  margin-top: 10px;
-}
-
-.footer .copyright {
-  margin-top:14px;
-  margin-bottom:0;
-  font-size:13px;
-  opacity:0.6;
+ 
+nav ul li a:hover {
+  color: #d1a3b8;
 }
 </style>

@@ -22,10 +22,12 @@ export default {
 </script>
  
 <style scoped>
+
 .chocomelt {
   background-color: #d1a3b8; 
   text-align: center;
   padding: 20px;
+  
 }
  
 header {
@@ -36,9 +38,10 @@ header {
 }
  
 .logo {
-  font-family: 'YourChosenFont', sans-serif;
+  font-family: 'Blood Lust', sans-serif;                                    
+  src: url ('https://fonts.cdnfonts.com/css/blood-lust');
   font-size: 3rem;
-  color: #4a2c2a; /* Marrom para combinar com o chocolate */
+  color: #4a2c2a; 
   text-shadow: 2px 2px #000;
 }
  
@@ -61,4 +64,8 @@ nav ul li a {
 nav ul li a:hover {
   color: #d1a3b8;
 }
+
+
+
+
 </style>

@@ -5,39 +5,45 @@ import ProdutoPage from "./components/ProdutoPage.vue";
 import CarrinhoPage from "./components/CarrinhoPage.vue";
 import ContatoPage from "./components/ContatoPage.vue";
 import LoginPage from './components/LoginPage.vue';
+import AberturaPage from "./components/AberturaPage.vue";
 
 const routes = [
+    {
+        path: '/Abertura',
+        name: 'Abertura',
+        component: AberturaPage
+    },
     {
         path: '/HomePage',
         name: 'Home Page',
         component: HomePage
     },
     {
-        path: '/LoginPage',
-        name: 'Login',
-        component: LoginPage
+        path: '/Produtos',
+        name: 'Produtos',
+        component: ProdutoPage
     },
     {
-        path: '/ContatoPage',
-        name: 'Contato',
-        component: ContatoPage
-    },
-    {
-        path: '/CarrinhoPage',
+        path: '/Carrinho',
         name: 'Carrinho',
         component: CarrinhoPage
     },
-
     {
-        path: '/ProdutoPage',
-        name: 'NewPage',
-        component: ProdutoPage
+        path: '/Contato',
+        name: 'Contato',
+        component: ContatoPage
     },
 
     {
-        path: '/SobreNos',
-        name: 'NewPage',
+        path: '/Sobre Nós',
+        name: 'Sobre Nós',
         component: SobreNos
+    },
+
+    {
+        path: '/Login',
+        name: 'Login',
+        component: LoginPage
     }
 
 ];

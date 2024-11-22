@@ -8,6 +8,7 @@
           <li><a href="#">Carrinho</a></li>
           <li><a href="#">Contato</a></li>
           <li><a href="#">Sobre Nós</a></li>
+          <li><a href="#">Login</a></li>
         </ul>
       </nav>
     </header>

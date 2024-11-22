@@ -9,7 +9,7 @@ import AberturaPage from "./components/AberturaPage.vue";
 
 const routes = [
     {
-        path: '/Abertura',
+        path: '/',
         name: 'Abertura',
         component: AberturaPage
     },

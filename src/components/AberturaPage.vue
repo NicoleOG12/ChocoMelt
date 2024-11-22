@@ -1,4 +1,5 @@
 <template>
+  <body>
     <div class="chocomelt">
       <header>
         <h1 class="nome">CHOCOMELT</h1>
@@ -14,6 +15,8 @@
         </nav>
       </header>
     </div>
+        
+  </body>
   </template>
    
   <script>
@@ -22,13 +25,17 @@
   };
   </script>
    
-  <style>
+  <style scoped>
   body{
-    background-color: #d1a3b8;
-    text-align: center;
-    padding: 20px;
-    border-radius: 30px;
-  }
+  background-color: #d1a3b8;
+  height: 1200px;
+  /*padding: 0;*/
+  /*margin: 0;*/
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+}
    
   header {
     background-image: url('');

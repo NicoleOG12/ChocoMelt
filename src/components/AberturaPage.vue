@@ -10,7 +10,7 @@
             <li><router-link to="/Carrinho">Carrinho</router-link></li>
             <li><router-link to="/Contato">Contato</router-link></li>
             <li><router-link to="/Sobre Nós">Sobre Nós</router-link></li>
-            <li><router-link to="/Login">Login</router-link></li>
+    
           </ul>
         </nav>
       </header>

@@ -35,16 +35,16 @@ export default {
   data() {
     return {
       products: [
-{ id: 1, name: "Bolo de Chocolate", price: 39.9,},
-{ id: 2, name: "Bolo de Morango", price: 39.9,},
-{ id: 3, name: "Bolo de Frutas", price: 39.9, },
-{ id: 4, name: "Bolo de Chocolate", price: 39.9,},
-{ id: 5, name: "Bolo de Morango", price: 39.9,},
-{ id: 6, name: "Bolo de Chocolate", price: 39.9,},
-{ id: 7, name: "Bolo de Morango", price: 39.9,},
-{ id: 8, name: "Bolo de Frutas", price: 39.9, },
-{ id: 9, name: "Bolo de Chocolate", price: 39.9,},
-{ id: 10, name: "Bolo de Morango", price: 39.9,},
+        { id: 1, name: "Bolo de Chocolate", price: 39.9,},
+        { id: 2, name: "Bolo de Morango", price: 39.9,},
+        { id: 3, name: "Bolo de Frutas", price: 39.9, },
+        { id: 4, name: "Bolo de Chocolate", price: 39.9,},
+        { id: 5, name: "Bolo de Morango", price: 39.9,},
+        { id: 6, name: "Bolo de Chocolate", price: 39.9,},
+        { id: 7, name: "Bolo de Morango", price: 39.9,},
+        { id: 8, name: "Bolo de Frutas", price: 39.9, },
+        { id: 9, name: "Bolo de Chocolate", price: 39.9,},
+        { id: 10, name: "Bolo de Morango", price: 39.9,},
       ],
       cart: [],
     };
@@ -52,7 +52,7 @@ export default {
   methods: {
     addToCart(product) {
       this.cart.push(product);
-alert(`${product.name} foi adicionado ao carrinho!`);
+      alert(`${product.name} foi adicionado ao carrinho!`);
     },
   },
 };

@@ -25,14 +25,8 @@
   <div style="background-color: purple;"></div>
   <div style="background-color: greenyellow;"></div>
 </div>
-    </div>
-  </div>
 
-  <div class="items2">
-    <div class="item" style="background-color: blue;">
-
-
-      <div id="promocoes">
+      <div id="promocoes" style="margin-left:1100px; margin-top:-120px">
   <div style="background-color: blue;"></div>
   <div style="background-color: red;"></div>
   <div style="background-color: green;"></div>
@@ -46,6 +40,46 @@
 
 
 
+		
+		<!--barra de menu-->
+		<div id="barra-de-menu">
+		
+			<!--menu-->
+		
+				<div id="menu-dropdown">
+					<span> MENU </span>
+						<div id="menu-dropdown-conteudo">
+							<p> P�gina inicial </p>
+							<p> Produtos </p>
+							<p> Paootes </p>
+							<p> Promo��es </p>
+							<p> Pedidos </p>
+							<p> Sobre n�s </p>
+							<p> Contato </p>
+						</div>
+				</div>
+
+			
+			<!-- barra de pesquisa-->
+			<a href="" id="barra-de-pesquisa"> 
+				<p>Pesquisar...</p>
+			</a>
+			
+			<!--�rea de login-->
+			<a href="" id="">
+				<p> Carrinho </p>
+			</a>
+			
+			<!--carrinho-->
+			<a href="" id="area-de-login"> 
+				<p>ENTRAR</p>
+			</a>
+	
+		</div>
+
+
+
+
   </body>
 </template>
  
@@ -54,6 +88,15 @@
 </script>
  
 <style>
+
+span, p, a:any-link a:visited, a:link{
+			margin: 0px;
+			color: inherit;
+			text-decoration: none;
+			text-decoration-color: none;
+		}
+		
+
 
 body{
   background-color: #A8D1E7;
@@ -64,13 +107,14 @@ body{
   left: 0px;
   right: 0px;
   margin:0px;
+  overflow-x: hidden;
 }
 
 #promocoes{
   display: grid;
-  width:100%;
+  width:fit-content;
   margin:0px;
-  grid-template-columns:20% 20% 20% 20% 20%;
+  grid-template-columns:220px 220px 220px 220px 220px;
 }
 
   #promocoes div{
@@ -81,25 +125,60 @@ body{
 .items, .items2{
   height: 120px;
   position: relative;
-  width: 100%;
+  width: 1100px;
   background: #efefef;
   text-align: center;
   border-radius: 4px;
-  animation: slide-item 8s infinite linear;
+  animation: slide-item 22s infinite linear;
 }
-.items2{margin-left:100%; margin-top:-120px}
-
-/*.item:nth-child(0) { animation-delay: 0.1s; }
-.item:nth-child(1) { animation-delay: 8s; }
-item:nth-child(3) { animation-delay:0s; }
-.item:nth-child(4) { animation-delay: 0s; }*/
 
 @keyframes slide-item {
-    0% { left: -0%; right: -100%; }
-  100% { left: -100%; right: 0% }
+    0% { left: -0%; right: -1100px; }
+  100% { left: -1100px; right: 0% }
 }
 
 
+		
+
+			#barra-de-menu{
+				background-image: linear-gradient(#b8dcef, #A8D1E7);
+				display: grid;
+				grid-template-columns: 16% auto 8% 12%;
+				padding: 16px;
+				color: #fcfaf2;
+				text-align: center;
+				align-items: center;
+			}
+			
+				#menu-dropdown{
+					position: relative;
+					display: inline-block;
+				}
+				#menu-dropdown:hover #menu-dropdown-conteudo{
+					display: block;
+				}
+					#menu-dropdown-conteudo{
+						display: none;
+						position: absolute;
+						background-color:#A8D1E7;
+						padding: 10px 16px 8px 10%;
+						margin: 16px 16px 0px -16px;
+						width: 100%;
+						text-align: left;
+					}
+					#menu-dropdown-conteudo p{
+						margin: 16px 0px 8px 0px;						
+					}
+				
+				#barra-de-pesquisa{
+					background-image: linear-gradient(#fcfaf241, #fcfaf253);
+					margin: 0px 5% 0px 6%;
+					padding: 6px 6px 6px 16px;
+					border-radius: 16px;
+					text-align: left;
+				}
+		
+	
 
 
 

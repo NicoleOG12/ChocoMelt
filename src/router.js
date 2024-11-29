@@ -6,6 +6,7 @@ import CarrinhoPage from "./components/CarrinhoPage.vue";
 import ContatoPage from "./components/ContatoPage.vue";
 import LoginPage from './components/LoginPage.vue';
 import AberturaPage from "./components/AberturaPage.vue";
+import RegisterPage from "./components/RegisterPage.vue";
 
 const routes = [
     {
@@ -44,6 +45,12 @@ const routes = [
         path: '/Login',
         name: 'Login',
         component: LoginPage
+    },
+
+    {
+        path: "/Register",
+        name: "Register",
+        component: RegisterPage
     }
 
 ];

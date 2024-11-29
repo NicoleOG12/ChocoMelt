@@ -16,59 +16,35 @@
 	<div id="barra-de-menu">
 		<!--menu-->	
 		
-				
-		
-		<!-- barra de pesquisa-->
-		<a href="" id="barra-de-pesquisa"> 
-			<p>Pesquisar...</p>
-		</a>
-		
-		<!--�rea de login-->
-		<a href="" id="">
-			<p> Carrinho </p>
-		</a>
-		
-		<!--carrinho-->
-		<a href="" id="area-de-login"> 
-			<p>ENTRAR</p>
-		</a>
-	</div>
-
-	<div class="container">
-		<div class="items">
-			<div class="item">
-				<div id="promocoes">
-					<!--<CapaPromo></CapaPromo>-->
-					<div class="capa-promo" style="background-color: blue;">
-						<div class="overlay"> </div>
-					</div>
-					<div class="capa-promo" style="background-color: red;">
-						<div class="overlay"> </div>
-					</div>
-					<div class="capa-promo" style="background-color: blue;">
-						<div class="overlay"> </div>
-					</div>
-					<div class="capa-promo" style="background-color: red;">
-						<div class="overlay"> </div>
-					</div>
-					<div class="capa-promo" style="background-color: blue;">
-						<div class="overlay"> </div>
-					</div>
-					<div class="capa-promo" style="background-color: red;">
-						<div class="overlay"> </div>
-					</div>
+				<div id="menu-dropdown">
+					<span> MENU </span>
+						<div id="menu-dropdown-conteudo">
+							<p> P�gina inicial </p>
+							<p> Produtos </p>
+							<p> Paootes </p>
+							<p> Promo��es </p>
+							<p> Pedidos </p>
+							<p> Sobre n�s </p>
+							<p> Contato </p>
+						</div>
 				</div>
 
-				<div id="promocoes" style="margin-left:1320px; margin-top:-120px">
-
-					<div class="capa-promo" style="background-color: green;"></div>
-					<div class="capa-promo" style="background-color: purple;"></div>
-					<div class="capa-promo" style="background-color: green;"></div>
-					<div class="capa-promo" style="background-color: purple;"></div>
-					<div class="capa-promo" style="background-color: green;"></div>
-					<div class="capa-promo" style="background-color: purple;"></div>
-				</div>
-			</div>
+			
+			<!-- barra de pesquisa-->
+			<a href="" id="barra-de-pesquisa"> 
+				<p>Pesquisar...</p>
+			</a>
+			
+			<!--�rea de login-->
+			<a href="" id="">
+				<p> Carrinho </p>
+			</a>
+			
+			<!--carrinho-->
+			<a href="" id="area-de-login"> 
+				<p>ENTRAR</p>
+			</a>
+	
 		</div>
 	</div>
 </body>
@@ -105,6 +81,7 @@ body{
   right: 0px;
   margin:0px;
   overflow-x: hidden;
+ 
 }
 
 #barra-de-menu{

@@ -1,144 +1,185 @@
 <template>
   <body>
-  <header class="header">
-    <h1 class="logo">CHOCOMELT</h1>
-    <nav>
+    <header class="header">
+      <div class="logo">
+        <img src="../img/Logo.png" alt="Usuário">
+      </div>
+      <nav class="nav">
         <ul>
           <li><router-link to="/HomePage">Home</router-link></li>
-            <li><router-link to="/Produtos">Produtos</router-link></li>
-            <li><router-link to="/Contato">Contato</router-link></li>
-            <li><router-link to="/Sobre Nós">Sobre Nós</router-link></li>
-            <li><router-link to="/Carrinho"><div class="icon"><img src="../img/carrinho.png"></div> </router-link></li>
+          <li><router-link to="/Produtos">Produtos</router-link></li>
+          <li><router-link to="/Contato">Contato</router-link></li>
+          <li><router-link to="/Sobre Nós">Sobre Nós</router-link></li>
+          <li>
+            <router-link to="/Carrinho">
+              <div class="icon"><img src="../img/carrinho.png" alt="Carrinho"></div>
+            </router-link>
+          </li>
         </ul>
       </nav>
-    <div class="icons">
-      <img src="../img/user.png" alt="">
-    </div>
-  </header>
 
-  <div class="search"> <span></span><div class="centro"> </div>
-  <span></span></div>
-  <main class="products">
-    <div v-for="product in products" :key="product.id" class="product-card">
-      <div name="centralizado" class="centrulo"> <span></span><div class="circulo"> </div>
-        <span></span>    </div>
-      <h3>{{ product.name }}</h3>
-      <p>R$ {{ product.price.toFixed(2) }}</p>
-      <button @click="addToCart(product)">Adicionar ao Carrinho</button>
+      <div class="icons">
+        <img src="../img/user.png" alt="Usuário">
+      </div>
+    </header>
+ 
+    <div class="search">
+      <input
+        v-model="searchQuery"
+        type="text"
+        placeholder="Pesquise produtos..."
+        @input="searchProducts"
+      />
+      <button @click="searchProducts">Buscar</button>
     </div>
-  </main>
-</body>
+ 
+    <main class="products">
+      <div v-for="product in filteredProducts" :key="product.id" class="product-card">
+        <div class="centrulo">
+          <span></span>
+          <div class="circulo">
+            <img :src="product.image" alt="Imagem do produto">
+          </div>
+          <span></span>
+        </div>
+        <h3>{{ product.name }}</h3>
+        <p>R$ {{ product.price.toFixed(2) }}</p>
+        <button @click="addToCart(product)">Adicionar ao Carrinho</button>
+      </div>
+    </main>
+  </body>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      searchQuery: "",  
       products: [
-        { id: 1, name: "Bolo de Chocolate", price: 39.9,},
-        { id: 2, name: "Bolo de Morango", price: 39.9,},
-        { id: 3, name: "Bolo de Frutas", price: 39.9, },
-        { id: 4, name: "Bolo de Chocolate", price: 39.9,},
-        { id: 5, name: "Bolo de Morango", price: 39.9,},
-        { id: 6, name: "Bolo de Chocolate", price: 39.9,},
-        { id: 7, name: "Bolo de Morango", price: 39.9,},
-        { id: 8, name: "Bolo de Frutas", price: 39.9, },
-        { id: 9, name: "Bolo de Chocolate", price: 39.9,},
-        { id: 10, name: "Bolo de Morango", price: 39.9,},
+        { id: 1, name: "Bolo de Chocolate", price: 39.9, image: require("../img/BOLO1.png") },
+        { id: 2, name: "Bolo de Morango", price: 39.9, image: require( "../img/BOLO2.png") },
+        { id: 3, name: "Bolo de Frutas", price: 39.9, image: require( "../img/BOLO3.png") },
+        { id: 4, name: "Bolo de Chocolate Branco", price: 39.9, image: require( "../img/BOLO4.png") },
+        { id: 5, name: "Bolo de Chocolate", price: 39.9, image: require("../img/BOLO1.png") },
+        { id: 6, name: "Bolo de Morango", price: 39.9, image: require( "../img/BOLO2.png") },
+        { id: 7, name: "Bolo de Frutas", price: 39.9, image: require( "../img/BOLO3.png") },
+        { id: 8, name: "Bolo de Chocolate Branco", price: 39.9, image: require( "../img/BOLO4.png") },
       ],
       cart: [],
     };
+  },
+  computed: {
+    filteredProducts() {
+      if (!this.searchQuery) {
+        return this.products;
+      }
+      return this.products.filter((product) => {
+        return product.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+      });
+    },
   },
   methods: {
     addToCart(product) {
       this.cart.push(product);
       alert(`${product.name} foi adicionado ao carrinho!`);
     },
+    searchProducts() {
+    },
   },
 };
 </script>
  
 <style scoped>
-
-body{
-  background-color: #A8D1E7;
-  height: 1200px;
-  /*padding: 0;*/
-  /*margin: 0;*/
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-}
-
-.logo{
-  color: #A8D1E7;
-  margin: 10px;
-}
-
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   background-image: url(../img/image.png);
-  height: 200px;
-  background-repeat: no-repeat ;
+  background-size: cover;
+  background-position: center; 
+  height: 100vh;
   color: white;
-  padding: 20px;
+  margin-top: 0;
+  padding: 0 40px;
+}
+
+.logo img {
+  color: #C191B2;
+  height: 30px;
+  top: -250px;
   position: relative;
+ 
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-   
-  nav ul li a {
-     font-family: 'YourChosenFont', sans-serif;
-     font-size: 1.2rem;
-     color: #d1a3b8;
-     text-decoration: none;
-     transition: color 0.3s ease;
-     margin-bottom: 20px;
-  }
-   
-  nav ul li a:hover {
-    color: #d1a3b8;
-  }
- 
-.icons img{
-  margin-left: 25px;
-  cursor: pointer;
-  color: #C191B2;
-  height: 40px;
-  padding: 20px;
+  list-style: none;
+  display: flex;
+  justify-content: center; 
+  gap: 20px;
+  margin-top: -200px;
 }
 
-nav ul li a .icon img{
-  margin-left: 15px;
-  cursor: pointer;
+nav ul li a {
+  font-family: 'YourChosenFont', sans-serif;
+  font-size: 1.2rem;
+  color: #d1a3b8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding-left: 20px;
+}
+
+nav ul li a:hover {
+  color: #d1a3b8;
+}
+
+.icons img {
+  color: #C191B2;
+  height: 40px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+nav ul li a .icon img {
+  margin-left: 25px;
+  margin-top: -50px;
   color: #C191B2;
   height: 30px;
 }
 
-.search{
-  border: 1px solid #ffffff;
+
+.search {
   width: 650px;
-  height: 50px;
-  background-color: #ffffff;
-  border-radius: 20px;
+  margin: 2% auto;
   text-align: center;
-  margin:2% auto 2% auto;
+  margin-top: -150px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
-.search .centro{
-  display: grid;
-  grid-template-columns:auto 6000px auto;
+.search input {
+  width: 80%;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 20px;
+  border: 1px solid #C191B2;
+  font-size: 16px;
+}
 
-} 
+.search button {
+  background-color: #C191B2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.search button:hover {
+  background-color: #d1a3b8;
+}
+
 
 .products {
   display: grid;
@@ -147,17 +188,17 @@ nav ul li a .icon img{
   padding: 20px;
   margin: 50px;
 }
- 
+
 .product-card {
   text-align: center;
   border: 1px solid #ffffff;
   border-radius: 8px;
   padding: 20px;
   background-color: #f9f9f900;
-  margin: 20;
+  margin: 0px;
 }
 
-.circulo{
+.circulo {
   border: 1px solid #C191B2;
   width: 150px;
   height: 150px;
@@ -165,18 +206,18 @@ nav ul li a .icon img{
   background-color: #C191B2;
 }
 
-.product-card .centrulo{
+.product-card .centrulo {
   display: grid;
-  grid-template-columns:auto 160px auto;
+  grid-template-columns: auto 160px auto;
 }
- 
-.product-card img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+
+.circulo img {
+  width: 150px;
+  height: 130px;
+  top: 10px;
   border-radius: 50%;
 }
- 
+
 .product-card button {
   margin-top: 10px;
   padding: 8px 12px;
@@ -186,15 +227,15 @@ nav ul li a .icon img{
   border-radius: 5px;
   cursor: pointer;
 }
- 
+
 .product-card button:hover {
   background: #d1a3b8;
 }
 
-h3{
+h3 {
   color: #C191B2;
 }
- 
+
 .cart {
   padding: 20px;
   background: #f1f1f1;
@@ -202,26 +243,28 @@ h3{
   border-radius: 8px;
   margin: 20px;
 }
- 
+
 .cart ul {
   list-style: none;
   padding: 0;
 }
- 
+
 .cart li {
   margin-bottom: 10px;
 }
-
 
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
     text-align: center;
+    justify-content: center; 
   }
+
   nav ul {
     flex-direction: column;
     gap: 10px;
   }
+
   .products {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }

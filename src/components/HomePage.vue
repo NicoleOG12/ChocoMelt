@@ -49,12 +49,12 @@
 				<div id="menu-dropdown">
 					<span> MENU </span>
 						<div id="menu-dropdown-conteudo">
-							<p> P�gina inicial </p>
+							<p> Página inicial </p>
 							<p> Produtos </p>
-							<p> Paootes </p>
-							<p> Promo��es </p>
+							<p> Pacotes </p>
+							<p> Promoções </p>
 							<p> Pedidos </p>
-							<p> Sobre n�s </p>
+							<p> Sobre nós </p>
 							<p> Contato </p>
 						</div>
 				</div>
@@ -72,7 +72,8 @@
 			
 			<!--carrinho-->
 			<a href="" id="area-de-login"> 
-				<p>ENTRAR</p>
+
+				<p><router-link to="/Login">Entrar</router-link></p>
 			</a>
 	
 		</div>
@@ -108,6 +109,7 @@ body{
   right: 0px;
   margin:0px;
   overflow-x: hidden;
+ 
 }
 
 #promocoes{

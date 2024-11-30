@@ -22,7 +22,7 @@
         <img src="../../img/user.png" alt="Usuário">
       </div>
     </header>
- 
+    
     <div class="search">
       <input
         v-model="searchQuery"
@@ -38,13 +38,13 @@
         <div class="centrulo">
           <span></span>
           <div class="circulo">
-            <router-link :to="'/ProdutoDetalhes' + product.id">
+            <router-link :to="'/ProdutoDetalhes/' + product.id">
               <img :src="product.image" alt="Imagem do produto">
             </router-link>
           </div>
           <span></span>
         </div>
-        <h3>{{ product.name }}</h3>
+        <h3>{{ product.name }}</h3> 
         <p>R$ {{ product.price.toFixed(2) }}</p>
         <button @click="addToCart(product)">Adicionar ao Carrinho</button>
       </div>
@@ -53,31 +53,25 @@
 </template>
 
 <script>
+import { firestore, collection, getDocs } from "../../FirebaseConfig";
+
 export default {
   data() {
     return {
-      searchQuery: "",  
-      products: [
-        { id: 1, name: "Bolo de Chocolate", price: 39.9, image: require("../../img/BOLO1.png") },
-        { id: 2, name: "Bolo de Morango", price: 39.9, image: require( "../../img/BOLO2.png") },
-        { id: 3, name: "Bolo de Frutas", price: 39.9, image: require( "../../img/BOLO3.png") },
-        { id: 4, name: "Bolo de Chocolate Branco", price: 39.9, image: require( "../../img/BOLO4.png") },
-        { id: 5, name: "Bolo de Chocolate", price: 39.9, image: require("../../img/BOLO1.png") },
-        { id: 6, name: "Bolo de Morango", price: 39.9, image: require( "../../img/BOLO2.png") },
-        { id: 7, name: "Bolo de Frutas", price: 39.9, image: require( "../../img/BOLO3.png") },
-        { id: 8, name: "Bolo de Chocolate Branco", price: 39.9, image: require( "../../img/BOLO4.png") },
-      ],
+      searchQuery: "", 
+      products: [], 
       cart: [],
     };
   },
   computed: {
     filteredProducts() {
-      if (!this.searchQuery) {
+      if (!this.searchQuery.trim()) {
         return this.products;
       }
-      return this.products.filter((product) => {
-        return product.name.toLowerCase().includes(this.searchQuery.toLowerCase());
-      });
+      const query = this.searchQuery.trim().toLowerCase();
+      return this.products.filter((product) =>
+        product.name.toLowerCase().includes(query)
+      );
     },
   },
   methods: {
@@ -85,8 +79,35 @@ export default {
       this.cart.push(product);
       alert(`${product.name} foi adicionado ao carrinho!`);
     },
-    searchProducts() {
+
+    async fetchProducts() {
+      try {
+        const productsCollection = collection(firestore, "Produtos");
+        const querySnapshot = await getDocs(productsCollection);
+        const products = [];
+
+        querySnapshot.forEach((doc) => {
+          const productData = doc.data();
+          products.push({
+            id: doc.id,
+            name: productData.Nome, 
+            price: parseFloat(productData.Preço), 
+            image: productData.Foto, 
+          });
+        });
+
+        this.products = products; 
+      } catch (error) {
+        console.error("Erro ao buscar os produtos: ", error);
+      }
     },
+
+    searchProducts() {
+      this.filteredProducts;
+    },
+  },
+  mounted() {
+    this.fetchProducts(); 
   },
 };
 </script>

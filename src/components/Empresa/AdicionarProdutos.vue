@@ -57,27 +57,41 @@
 </template>
 
 <script>
-import { getFirestore, collection, addDoc } from "firebase/firestore"; 
 import { getAuth } from "firebase/auth"; 
+import { getFirestore, collection, addDoc } from "firebase/firestore"; 
 
 export default {
   data() {
     return {
       product: {
         Nome: "",
-        Foto: null,     
+        Foto: null,
         Categoria: "", 
-        Descricaoo: "",      
+        Descricao: "",      
         Peso: "",       
         Preco: "",      
       },
     };
   },
   methods: {
+    handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+          this.product.Foto = reader.result; 
+        };
+
+        reader.readAsDataURL(file);  
+      }
+    },
+
     async addProduct() {
       try {
         const db = getFirestore(); 
-        const user = getAuth().currentUser; 
+        const auth = getAuth();  
+        const user = auth.currentUser;  
 
         if (!user) {
           alert("Você precisa estar logado para adicionar um produto!");
@@ -86,37 +100,31 @@ export default {
 
         await addDoc(collection(db, "Produtos"), {
           Nome: this.product.Nome,
-          Foto: this.product.Foto ? this.product.Foto.name : null,
+          Foto: this.product.Foto, 
           Categoria: this.product.Categoria,
-          Descricao: this.product.Descricaoo,
+          Descricao: this.product.Descricao,
           Peso: this.product.Peso,
           Preco: this.product.Preco,
         });
 
         alert("Produto adicionado com sucesso!");
-
+        
         this.product = {
           Nome: "",
           Foto: null,     
           Categoria: "", 
-          Descricaoo: "",      
+          Descricao: "",      
           Peso: "",      
           Preco: "",
         };
       } catch (error) {
         alert("Erro ao adicionar produto: " + error.message);
       }
-    },
-    
-    handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        this.product.Fotq = file;
-      }
     }
-  },
+  }
 };
 </script>
+
 
 <style scoped>
 body {

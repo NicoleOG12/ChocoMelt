@@ -15,50 +15,53 @@
     </header>
     
     <div class="add-product-form">
-      <h2>Adicionar Produto</h2><br>
-
-      <form @submit.prevent="addProduct">
-
+      <h2>Editar Produto</h2><br>
+  
+      <form @submit.prevent="updateProduct">
+  
         <div class="form-group">
           <label for="nome">Nome</label>
           <input v-model="product.Nome" type="text" id="nome" required />
         </div><br>
-
+  
         <div class="form-group">
           <label for="foto">Foto</label>
-          <input @change="handleFileUpload" type="file" id="foto" required />
+          <input @change="handleFileUpload" type="file" id="foto" />
           <p v-if="product.Foto">Imagem selecionada: {{ product.Foto.name }}</p>
         </div><br>
-
+  
         <div class="form-group">
           <label for="categoria">Categoria</label>
           <input v-model="product.Categoria" type="text" id="categoria" required />
         </div><br>
-
+  
         <div class="form-group">
           <label for="detalhes">Descrição</label>
           <textarea v-model="product.Descricao" id="detalhes" required></textarea>
         </div><br>
-
+  
         <div class="form-group">
           <label for="peso">Peso</label>
           <input v-model="product.Peso" type="text" id="peso" required />
         </div><br>
-
+  
         <div class="form-group">
           <label for="preco">Preço</label>
           <input v-model="product.Preco" type="text" id="preco" required />
         </div><br><br>
-
-        <button type="submit">Adicionar Produto</button>
+        
+        <div class="button-group">
+          <button type="submit">Salvar Alterações</button><br><br>
+          <button type="button" @click="deleteProduct">Excluir Produto</button>
+      </div> 
+      
       </form>
     </div>
   </body>
 </template>
 
 <script>
-import { getFirestore, collection, addDoc } from "firebase/firestore"; 
-import { getAuth } from "firebase/auth"; 
+import { getFirestore, doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 
 export default {
   data() {
@@ -67,51 +70,74 @@ export default {
         Nome: "",
         Foto: null,     
         Categoria: "", 
-        Descricaoo: "",      
+        Descricao: "",      
         Peso: "",       
         Preco: "",      
       },
+      productId: null, 
     };
   },
+  async created() {
+    this.productId = this.$route.params.id; 
+    
+    if (this.productId) {
+      await this.loadProductData();
+    }
+  },
   methods: {
-    async addProduct() {
+    async loadProductData() {
       try {
-        const db = getFirestore(); 
-        const user = getAuth().currentUser; 
-
-        if (!user) {
-          alert("Você precisa estar logado para adicionar um produto!");
-          return;
+        const db = getFirestore();
+        const docRef = doc(db, "Produtos", this.productId);
+        const docSnap = await getDoc(docRef);
+        
+        if (docSnap.exists()) {
+          this.product = docSnap.data(); 
+        } else {
+          alert("Produto não encontrado!");
         }
+      } catch (error) {
+        alert("Erro ao carregar dados do produto: " + error.message);
+      }
+    },
 
-        await addDoc(collection(db, "Produtos"), {
+    async updateProduct() {
+      try {
+        const db = getFirestore();
+        const docRef = doc(db, "Produtos", this.productId);
+        
+        await updateDoc(docRef, {
           Nome: this.product.Nome,
-          Foto: this.product.Foto ? this.product.Foto.name : null,
-          Categoria: this.product.Categoria,
-          Descricao: this.product.Descricaoo,
+          Foto: this.product.Foto ? this.product.Foto.name : this.product.Foto, 
+          Descricao: this.product.Descricao,
           Peso: this.product.Peso,
           Preco: this.product.Preco,
         });
 
-        alert("Produto adicionado com sucesso!");
-
-        this.product = {
-          Nome: "",
-          Foto: null,     
-          Categoria: "", 
-          Descricaoo: "",      
-          Peso: "",      
-          Preco: "",
-        };
+        alert("Produto atualizado com sucesso!");
       } catch (error) {
-        alert("Erro ao adicionar produto: " + error.message);
+        alert("Erro ao atualizar produto: " + error.message);
       }
     },
-    
+
+    async deleteProduct() {
+      try {
+        const db = getFirestore();
+        const docRef = doc(db, "Produtos", this.productId);
+        
+        await deleteDoc(docRef);
+        alert("Produto excluído com sucesso!");
+
+        this.$router.push("/Produtos");
+      } catch (error) {
+        alert("Erro ao excluir produto: " + error.message);
+      }
+    },
+
     handleFileUpload(event) {
       const file = event.target.files[0];
       if (file) {
-        this.product.Fotq = file;
+        this.product.Foto = file;
       }
     }
   },
@@ -218,6 +244,13 @@ button {
 
 button:hover {
   background-color: #d1a3b8;
+}
+
+.button-group {
+display: flex;
+gap: 10px; 
+justify-content: center; 
+margin-top: 20px; 
 }
 
 .form-group input:hover,

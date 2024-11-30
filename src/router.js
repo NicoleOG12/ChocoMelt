@@ -9,6 +9,10 @@ import AberturaPage from "./components/AberturaPage.vue";
 import RegisterPage from "./components/RegisterPage.vue";
 import ProdutoDetalhes from "./components/Usuário/ProdutoDetalhes.vue";
 import AdicionarProdutos from "./components/Empresa/AdicionarProdutos.vue";
+import EditandoPage from "./components/Empresa/EditandoPage.vue";
+import EditarProdutos from "./components/Empresa/EditarProdutos.vue";
+import PedidosPage from "./components/Empresa/PedidosPage.vue";
+import PromocoesPage from "./components/Empresa/PromocoesPaage.vue";
 
 
 const routes = [
@@ -67,6 +71,29 @@ const routes = [
         path: "/AdicionarProdutos",
         name: "AdicionarProdutos",
         component: AdicionarProdutos,
+        props: route => ({ id: route.params.id })
+    },
+    {
+        path: "/EditandoPage",
+        name: "EditandoPage",
+        component: EditandoPage,
+        props: route => ({ id: route.params.id })
+    },
+    {
+        path: "/EditarProdutos",
+        name: "EditarProdutos",
+        component: EditarProdutos,
+        props: route => ({ id: route.params.id })
+    },
+    {
+        path: "/PedidosPage",
+        name: "PedidosPage",
+        component: PedidosPage
+    },
+    {
+        path: "/PromoçõesPage",
+        name: "PromoçõesPage",
+        component: PromocoesPage,
         props: route => ({ id: route.params.id })
     }
 

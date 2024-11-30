@@ -1,12 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "./components/HomePage.vue";
-import SobreNos from "./components/SobreNos.vue";
-import ProdutoPage from "./components/ProdutoPage.vue";
-import CarrinhoPage from "./components/CarrinhoPage.vue";
-import ContatoPage from "./components/ContatoPage.vue";
+import HomePage from "./components/Usuário/HomePage.vue";
+import SobreNos from "./components/Usuário/SobreNos.vue";
+import ProdutoPage from "./components/Usuário/ProdutoPage.vue";
+import CarrinhoPage from "./components/Usuário/CarrinhoPage.vue";
+import ContatoPage from "./components/Usuário/ContatoPage.vue";
 import LoginPage from './components/LoginPage.vue';
 import AberturaPage from "./components/AberturaPage.vue";
 import RegisterPage from "./components/RegisterPage.vue";
+import ProdutoDetalhes from "./components/Usuário/ProdutoDetalhes.vue";
+import AdicionarProdutos from "./components/Empresa/AdicionarProdutos.vue";
+
 
 const routes = [
     {
@@ -17,7 +20,8 @@ const routes = [
     {
         path: '/HomePage',
         name: 'Home Page',
-        component: HomePage
+        component: HomePage,
+        props: route => ({ id: route.params.id })
     },
     {
         path: '/Produtos',
@@ -51,6 +55,19 @@ const routes = [
         path: "/Register",
         name: "Register",
         component: RegisterPage
+    },
+
+    {
+        path: "/ProdutoDetalhes/:id",
+        name: "ProdutoDetalhes",
+        component: ProdutoDetalhes,
+        props: true,
+    },
+    {
+        path: "/AdicionarProdutos",
+        name: "AdicionarProdutos",
+        component: AdicionarProdutos,
+        props: route => ({ id: route.params.id })
     }
 
 ];

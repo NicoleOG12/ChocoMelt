@@ -8,7 +8,7 @@
 <script>
 </script>
 
-<style>
+<style scoped>
 
 .promo{
     width: 220px;

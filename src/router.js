@@ -51,6 +51,12 @@ const routes = [
         path: "/Register",
         name: "Register",
         component: RegisterPage
+    },
+
+    {
+        path: "/Produto",
+        name: 'Produto',
+        component: ProdutoPage
     }
 
 ];

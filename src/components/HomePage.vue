@@ -20,7 +20,8 @@
 					<span> MENU </span>
 						<div id="menu-dropdown-conteudo">
 							<p> P�gina inicial </p>
-							<p> Produtos </p>
+							<router-link to="/Produto"> Produtos </router-link>
+
 							<p> Paootes </p>
 							<p> Promo��es </p>
 							<p> Pedidos </p>
@@ -42,11 +43,12 @@
 			
 			<!--carrinho-->
 			<a href="" id="area-de-login"> 
-				<p>ENTRAR</p>
+				<router-link to="/Login">Entrar</router-link>
+				
 			</a>
 	
 		</div>
-	</div>
+	
 </body>
 
 </template>

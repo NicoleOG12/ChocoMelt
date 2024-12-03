@@ -181,7 +181,6 @@ nav ul li a .icon img {
   height: 30px;
 }
 
-
 .search {
   width: 650px;
   margin: 2% auto;

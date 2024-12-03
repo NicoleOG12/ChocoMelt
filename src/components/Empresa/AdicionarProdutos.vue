@@ -47,7 +47,14 @@
 
         <div class="form-group">
           <label for="preco">Preço</label>
-          <input v-model="product.Preco" type="text" id="preco" required />
+          <input 
+            v-model="formattedPreco" 
+            type="text" 
+            id="preco" 
+            required 
+            @input="formatPreco" 
+            placeholder="R$ 0,00" 
+          />
         </div><br><br>
 
         <button type="submit">Adicionar Produto</button>
@@ -71,6 +78,7 @@ export default {
         Peso: "",       
         Preco: "",      
       },
+      formattedPreco: "",  
     };
   },
   methods: {
@@ -84,6 +92,18 @@ export default {
         };
 
         reader.readAsDataURL(file);  
+      }
+    },
+
+    formatPreco() {
+      let preco = this.formattedPreco.replace(/[^\d,]/g, "");
+      
+      preco = preco.replace(",", ".");
+      
+      if (!isNaN(preco) && preco !== "") {
+        this.product.Preco = parseFloat(preco);
+      } else {
+        this.product.Preco = ""; 
       }
     },
 
@@ -104,7 +124,7 @@ export default {
           Categoria: this.product.Categoria,
           Descricao: this.product.Descricao,
           Peso: this.product.Peso,
-          Preco: this.product.Preco,
+          Preco: this.product.Preco, 
         });
 
         alert("Produto adicionado com sucesso!");
@@ -117,6 +137,7 @@ export default {
           Peso: "",      
           Preco: "",
         };
+        this.formattedPreco = ""; 
       } catch (error) {
         alert("Erro ao adicionar produto: " + error.message);
       }
@@ -124,7 +145,6 @@ export default {
   }
 };
 </script>
-
 
 <style scoped>
 body {

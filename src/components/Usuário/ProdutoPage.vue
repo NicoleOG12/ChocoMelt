@@ -45,7 +45,7 @@
           <span></span>
         </div>
         <h3>{{ product.name }}</h3> 
-        <p>R$ {{ product.price.toFixed(2) }}</p>
+        <p>R$ {{ product.price}}</p>
         <button @click="addToCart(product)">Adicionar ao Carrinho</button>
       </div>
     </main>
@@ -91,7 +91,7 @@ export default {
           products.push({
             id: doc.id,
             name: productData.Nome, 
-            price: parseFloat(productData.Preço), 
+            price: productData.Preco, 
             image: productData.Foto, 
           });
         });

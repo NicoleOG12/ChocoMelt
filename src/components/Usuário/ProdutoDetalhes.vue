@@ -1,7 +1,7 @@
 <template>
   <body>
     <div class="icons">
-      <img src="../../img/carrinho.png" alt="Usuário">
+      <img src="../../img/carrinho.png" alt="Carrinho">
     </div>
 
     <div v-if="!product" class="loading">
@@ -18,13 +18,19 @@
       <p><strong>Peso:</strong> {{ product.Peso || 'Não disponível' }}</p>
       <p><strong>Categoria:</strong> {{ product.Categoria || 'Não disponível' }}</p>
       <p><strong>Descrição:</strong> {{ product.Descricao || 'Não disponível' }}</p>
+      
+      <div class="actions">
+        <button @click="addToCart" class="btn add-to-cart">Adicionar ao Carrinho</button>
+        <button @click="buyNow" class="btn buy-now">Comprar Agora</button>
+      </div>
     </div>
 
   </body>
 </template>
 
 <script>
-import { firestore, doc, getDoc } from '../../FirebaseConfig'; 
+import { firestore, doc, getDoc, collection, addDoc } from '../../FirebaseConfig'; 
+import { getAuth } from 'firebase/auth'; 
 
 export default {
   data() {
@@ -44,13 +50,53 @@ export default {
 
         if (docSnapshot.exists()) {
           this.product = docSnapshot.data();
+          this.product.id = docSnapshot.id; 
+          console.log('Produto carregado:', this.product); 
         } else {
           console.log('Produto não encontrado');
           this.product = null;
         }
       } catch (error) {
         console.error('Erro ao buscar produto:', error);
-        this.product = null; 
+        this.product = null;
+      }
+    },
+    
+    async addToCart() {
+      if (this.product && this.product.id) {
+        try {
+          const user = getAuth().currentUser; 
+
+          if (user) {
+            const cartItem = {
+              userId: user.uid,
+              productId: this.product.id,
+              name: this.product.Nome, 
+              price: this.product.Preco,
+              image: this.product.Foto,
+              createdAt: new Date(),
+            };
+
+            console.log('Adicionando ao carrinho:', cartItem);
+            
+            await addDoc(collection(firestore, 'Carrinho'), cartItem);
+            
+            console.log('Produto adicionado ao carrinho do Firebase:', cartItem);
+          } else {
+            console.log('Usuário não autenticado');
+          }
+        } catch (error) {
+          console.error('Erro ao adicionar ao carrinho:', error);
+        }
+      } else {
+        console.log('Produto ou ID do produto não está definido');
+      }
+    },
+
+    buyNow() {
+      if (this.product) {
+        console.log('Iniciando a compra do produto:', this.product);
+        this.$router.push({ name: 'Checkout' }); 
       }
     },
   },
@@ -119,5 +165,41 @@ nav ul li a .icon img {
   text-align: center;
   color: #666;
   font-size: 1.2em;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.btn {
+  background-color: #C191B2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #A87C9B;
+}
+
+.add-to-cart {
+  background-color: #C191B2;
+}
+
+.add-to-cart:hover {
+  background-color: #835a76;
+}
+
+.buy-now {
+  background-color: #96bfd4;
+}
+
+.buy-now:hover {
+  background-color: #6f92a3;
 }
 </style>

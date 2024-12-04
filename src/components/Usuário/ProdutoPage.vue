@@ -2,7 +2,7 @@
   <body>
     <header class="header">
       <div class="logo">
-        <img src="../img/Logo.png" alt="Usuário">
+        <img src="../../img/Logo.png" alt="Usuário">
       </div>
       <nav class="nav">
         <ul>
@@ -12,14 +12,14 @@
           <li><router-link to="/Sobre Nós">Sobre Nós</router-link></li>
           <li>
             <router-link to="/Carrinho">
-              <div class="icon"><img src="../img/carrinho.png" alt="Carrinho"></div>
+              <div class="icon"><img src="../../img/carrinho.png" alt="Carrinho"></div>
             </router-link>
           </li>
         </ul>
       </nav>
 
       <div class="icons">
-        <img src="../img/user.png" alt="Usuário">
+        <img src="../../img/user.png" alt="Usuário">
       </div>
     </header>
  
@@ -38,7 +38,9 @@
         <div class="centrulo">
           <span></span>
           <div class="circulo">
-            <img :src="product.image" alt="Imagem do produto">
+            <router-link :to="'/ProdutoDetalhes' + product.id">
+              <img :src="product.image" alt="Imagem do produto">
+            </router-link>
           </div>
           <span></span>
         </div>
@@ -56,14 +58,14 @@ export default {
     return {
       searchQuery: "",  
       products: [
-        { id: 1, name: "Bolo de Chocolate", price: 39.9, image: require("../img/BOLO1.png") },
-        { id: 2, name: "Bolo de Morango", price: 39.9, image: require( "../img/BOLO2.png") },
-        { id: 3, name: "Bolo de Frutas", price: 39.9, image: require( "../img/BOLO3.png") },
-        { id: 4, name: "Bolo de Chocolate Branco", price: 39.9, image: require( "../img/BOLO4.png") },
-        { id: 5, name: "Bolo de Chocolate", price: 39.9, image: require("../img/BOLO1.png") },
-        { id: 6, name: "Bolo de Morango", price: 39.9, image: require( "../img/BOLO2.png") },
-        { id: 7, name: "Bolo de Frutas", price: 39.9, image: require( "../img/BOLO3.png") },
-        { id: 8, name: "Bolo de Chocolate Branco", price: 39.9, image: require( "../img/BOLO4.png") },
+        { id: 1, name: "Bolo de Chocolate", price: 39.9, image: require("../../img/BOLO1.png") },
+        { id: 2, name: "Bolo de Morango", price: 39.9, image: require( "../../img/BOLO2.png") },
+        { id: 3, name: "Bolo de Frutas", price: 39.9, image: require( "../../img/BOLO3.png") },
+        { id: 4, name: "Bolo de Chocolate Branco", price: 39.9, image: require( "../../img/BOLO4.png") },
+        { id: 5, name: "Bolo de Chocolate", price: 39.9, image: require("../../img/BOLO1.png") },
+        { id: 6, name: "Bolo de Morango", price: 39.9, image: require( "../../img/BOLO2.png") },
+        { id: 7, name: "Bolo de Frutas", price: 39.9, image: require( "../../img/BOLO3.png") },
+        { id: 8, name: "Bolo de Chocolate Branco", price: 39.9, image: require( "../../img/BOLO4.png") },
       ],
       cart: [],
     };
@@ -88,17 +90,28 @@ export default {
   },
 };
 </script>
+
  
 <style scoped>
+body{
+  background-color: #A8D1E7;
+  /*padding: 0;*/
+  /*margin: 0;*/
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-image: url(../img/image.png);
+  background-image: url(../../img/image.png);
   background-size: cover;
   background-position: center; 
   height: 100vh;
-  color: white;
+  color: #A8D1E7;
   margin-top: 0;
   padding: 0 40px;
 }

@@ -1,18 +1,15 @@
 <template>
 <body id="homepage">
-	<header>
-		<nav>
-			<!--<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">Produtos</a></li>
-			<li><a href="#">Carrinho</a></li>
-			<li><a href="#">Contato</a></li>
-			<li><a href="#">Sobre Nós</a></li>
-			</ul>-->
-		</nav>
-	</header>
+	<header class="header">
+        <nav class="navbar">
+            <router-link to="/HomePage">Home</router-link>
+            <a href="#">Produtos</a>
+            <a href="#">Contato</a>
+            <a href="#">Sobre</a>
+        </nav>
+    </header>
 
-	<!--barra de menu-->
+	barra de menu
 	<div id="barra-de-menu">
 		<!--menu-->	
 		
@@ -155,5 +152,47 @@ body{
 		position:relative;
 	}
 
+	.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 12.5%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    z-index: 100;
+    background-color: blue;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 30px;
+}
+
+.navbar a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: white;
+    border-radius: 5px;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: .5s;
+}
+
+.navbar a:hover::after{
+    transform: translateY(0);
+    opacity: 1;
+}
 
 </style>
+

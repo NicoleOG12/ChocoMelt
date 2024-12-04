@@ -130,7 +130,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 * {
     margin: 0;
     padding: 0;
@@ -141,6 +141,8 @@ export default {
 
 body{
     background-color: "blue";
+    width: 100%;
+    
 }
 
 .header{
@@ -154,6 +156,7 @@ body{
     justify-content: space-between ;
     align-items: center;
     z-index: 100;
+    background-color: blue;
 }
 
 .navbar a {
@@ -194,7 +197,7 @@ body{
 
 .container{
     position: absolute;
-    top: 32%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 75%;
@@ -339,14 +342,14 @@ body{
 }
 
 .input::placeholder {
- color: #9e9ea7;
+  color: #9e9ea7;
 }
 
 .input:focus, input:hover {
- outline: none;
- border-color: rgba(87, 76, 234, 0.4);
- background-color: #fff;
- box-shadow: 0 0 0 4px rgba(55, 85, 255, 0.1);
+  outline: none;
+  border-color: rgba(87, 76, 234, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(55, 85, 255, 0.1);
 }
 
 

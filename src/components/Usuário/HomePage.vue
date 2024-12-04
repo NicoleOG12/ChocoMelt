@@ -123,45 +123,71 @@ export default {
 </script>
   
 <style scoped>
+body {
+  background-color: #A8D1E7;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+} 
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url(../../img/image.png);
+  background-size: cover;
+  background-position: center; 
+  height: 100vh;
+  color: #C191B2;
+  margin-top: 0;
+  padding: 0 40px;
+}
+
+.logo img {
+  color: #C191B2;
+  height: 30px;
+  top: -250px;
+  position: relative;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; 
+  gap: 20px;
+  margin-top: -200px;
+}
+
+nav ul li a {
+  font-family: 'YourChosenFont', sans-serif;
+  font-size: 1.2rem;
+  color: #d1a3b8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding-left: 20px;
+}
+
+.icons img {
+  color: #C191B2;
+  height: 40px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+nav ul li a .icon img {
+  margin-left: 25px;
+  margin-top: -50px;
+  color: #C191B2;
+  height: 30px;
+}
+
 span, p, a:any-link a:visited, a:link {
 	margin: 0px;
 	color: inherit;
 	text-decoration: none;
 	text-decoration-color: none;
-}
-  
-body {
-	background-color: #A8D1E7;
-	height: 1200px;
-	width: 100%;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	margin: 0px;
-	overflow-x: hidden;
-}
-
-#barra-de-menu {
-	background-image: linear-gradient(#b8dcef, #A8D1E7);
-	display: grid;
-	grid-template-columns: 16% auto 8% 12%;
-	padding: 16px;
-	color: #fcfaf2;
-	text-align: center;
-	align-items: center;
-}
-  
-#menu-dropdown-conteudo p {
-	margin: 16px 0px 8px 0px;
-}
-  
-#barra-de-pesquisa {
-	background-image: linear-gradient(#fcfaf241, #fcfaf253);
-	margin: 0px 5% 0px 6%;
-	padding: 6px 6px 6px 16px;
-	border-radius: 16px;
-	text-align: left;
 }
   
 #promocoes {

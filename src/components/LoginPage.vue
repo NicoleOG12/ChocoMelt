@@ -106,25 +106,44 @@
 <script>
 
 export default {
-  mounted() {
-    // Agora, o DOM foi montado, então podemos usar os seletores
-    const logregBox = document.querySelector('.logreg-box');
-    const loginLink = document.querySelector('.login-link');
-    const registerLink = document.querySelector('.register-link');
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    async login() {
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, this.email, this.password);  
+        alert("Login bem-sucedido!");
+        const user = userCredential.user;
+        const db = getFirestore(); 
+        const userDocRef = doc(db, "Usuário", user.uid);
+        const userDoc = await getDoc(userDocRef);
 
-    // Adiciona o evento de clique
-    if (registerLink) {
-      registerLink.addEventListener('click', () => {
-        logregBox.classList.add('active');
-      });
-    }
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const userType = userData.userType;
 
-    if (loginLink) {
-      loginLink.addEventListener('click', () => {
-        logregBox.classList.remove('active');
-      });
-    }
-  }
+          if (userType === "user") {
+            this.$router.push({ name: "Home Page", params: { userId: user.uid } });
+          }
+        } else {
+          const companyDocRef = doc(db, "Empresa", user.uid); 
+          const companyDoc = await getDoc(companyDocRef);
+
+          if (companyDoc.exists()) {
+            this.$router.push({ name: "AdicionarProdutos", params: { userId: user.uid } });
+          } else {
+            alert("Erro: usuário não encontrado no Firestore!");
+          }
+        }
+      } catch (error) {
+        alert("Erro ao fazer login: " + error.message);
+      }
+    },
+  },
 };
 
 </script>

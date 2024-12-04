@@ -79,7 +79,7 @@
             userType: "user", 
           });
   
-          this.$router.push({ name: "HomePage", params: { userId: user.uid } });
+          this.$router.push({ name: "Home Page", params: { userId: user.uid } });
         } catch (error) {
           alert("Erro ao criar conta: " + error.message);
         }

@@ -1,10 +1,11 @@
 <template>
 	<body>
 		<div id="homepage">
-			<header class="header">
+			<!--<header class="header">
 				<div class="logo">
 					<img src="../../img/Logo.png" alt="Usuário">
 				</div>
+			
 				<nav class="nav">
 					<ul>
 						<li><router-link to="/HomePage">Home</router-link></li>
@@ -30,15 +31,29 @@
 			<a v-else href="#" id="area-de-logout" @click="logout">
 				<p>Sair</p>
 			</a>
-		</div>
-		
+		</div>	-->
+
+
 		<div id="promocoes">
 			<div class="items">
 				<div class="capa-promo">
-					<div></div>
+					<div>fff</div>
+				</div>
+				<div class="capa-promo">
+					<div>fff</div>
+				</div>
+				<div class="capa-promo">
+					<div>fff</div>
+				</div>
+				<div class="capa-promo">
+					<div>fff</div>
+				</div>
+				<div class="capa-promo">
+					<div>fff</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</body>
 </template>
   
@@ -84,9 +99,10 @@ export default {
 body {
   background-color: #A8D1E7;
   position: absolute;
-  top: -20px;
+  top: -8px;
   left: -20px;
   right: -20px;
+  height: 100%;
 } 
 
 .header {
@@ -151,7 +167,7 @@ span, p, a:any-link a:visited, a:link {
 #promocoes {
 	display: grid;
 	width: fit-content;
-	margin: 0px;
+	margin: 20px 0px;
 	grid-template-columns: 220px 220px 220px 220px 220px 220px;
 }
   
@@ -166,6 +182,7 @@ span, p, a:any-link a:visited, a:link {
 	text-align: center;
 	border-radius: 4px;
 	animation: slide-item 40s infinite linear;
+	display:flex
 }
   
 .items:hover {
@@ -186,6 +203,7 @@ span, p, a:any-link a:visited, a:link {
 .capa-promo div {
 	height: 120px;
 	width: 220px;
+	margin:auto;
 	transition: all 0.4s ease-in-out;
 	background-image: url("https://static.vecteezy.com/system/resources/previews/029/720/177/non_2x/mixed-fruit-transparent-background-png.png");
 	background-size: cover;
@@ -195,9 +213,8 @@ span, p, a:any-link a:visited, a:link {
 }
   
 .capa-promo div:hover {
-	height: 124%;
-	width: 124%;
-	margin: -12%;
+	height: 140px;
+	width: 240px;
 	position: relative;
 }
 </style>

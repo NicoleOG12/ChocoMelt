@@ -185,7 +185,7 @@ nav ul li a .icon img {
   width: 650px;
   margin: 2% auto;
   text-align: center;
-  margin-top: -150px;
+  margin-top: -300px;
   display: flex;
   justify-content: center;
   gap: 10px;

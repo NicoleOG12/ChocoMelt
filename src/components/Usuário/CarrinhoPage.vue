@@ -18,9 +18,9 @@
         </ul>
       </nav>
 
-      <div class="icons">
-        <img src="../../img/user.png" alt="Usuário">
-      </div>
+      <router-link to="/Login">
+        <div class="icons"><img src="../../img/user.png" alt="Usuario"></div>
+      </router-link>
     </header>
 
     <div class="cart-container">

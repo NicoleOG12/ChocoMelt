@@ -2,7 +2,7 @@
   <body>
     <header class="header">
       <div class="logo">
-        <img src="../../img/Logo.png" alt="Logo">
+        <img src="../../img/Logo.png" alt="Usuário">
       </div>
       <nav class="nav">
         <ul>
@@ -17,64 +17,117 @@
           </li>
         </ul>
       </nav>
+
       <router-link to="/Login">
-        <div class="icons"><img src="../../img/user.png" alt="Usuário"></div>
+        <div class="icons"><img src="../../img/user.png" alt="Usuario"></div>
       </router-link>
     </header>
+  
+  <div class="about-container">
+    <h1>Sobre Nós</h1>
 
-    <div class="about-container">
-      <h1>Sobre Nós</h1>
+    <div class="team">
 
-      <div class="about-content">
-        <div class="about-text">
-          <h2>Quem Somos</h2>
-          <p>
-            Somos uma empresa dedicada a oferecer os melhores produtos para os nossos clientes. 
-            Nossa missão é proporcionar uma experiência única de compra online, com qualidade e preços acessíveis.
-          </p>
-
-          <h2>Missão</h2>
-          <p>
-            Nossa missão é oferecer produtos inovadores que atendam às necessidades e expectativas dos nossos clientes, 
-            promovendo excelência no atendimento e qualidade em todos os processos.
-          </p>
-
-          <h2>Visão</h2>
-          <p>
-            Ser reconhecida como a principal referência em nosso segmento, por meio da confiança dos clientes 
-            e da excelência dos nossos serviços.
-          </p>
-
-          <h2>Valores</h2>
-          <ul>
-            <li>Compromisso com a qualidade</li>
-            <li>Atendimento ao cliente de excelência</li>
-            <li>Inovação constante</li>
-            <li>Responsabilidade social e ambiental</li>
-          </ul>
+      <div class="team-member">
+        <div 
+          class="circle" 
+          @mouseover="showInfo('clara')" 
+          @mouseleave="hideInfo('clara')">
+          <img src="../../img/Clara.png" alt="Clara Araújo">
         </div>
-
-        <div class="about-image">
-          <img src="" alt="Sobre a Empresa">
+        <h3>Clara Araújo</h3>
+        <div class="info" :class="{'visible': isInfoVisible.clara}">
+          <div class="popup-content">
+            <img class="popup-img" src="../../img/Clara.png" alt="Clara Araújo">
+            <h4>Clara Araújo</h4>
+            <p><strong>Idade:</strong> 20 Anos</p>
+            <p>
+              Uma das minhas coisas favoritas de fazer é arte, de todos os tipos - visual, música, cinema, escrita etc. 
+              Outros hobbies que eu amo são videogames, confeitaria e aprender outros idiomas.
+            </p>
+          </div>
         </div>
       </div>
+
+      <div class="team-member">
+        <div 
+          class="circle" 
+          @mouseover="showInfo('julia')" 
+          @mouseleave="hideInfo('julia')">
+          <img src="../../img/Julia.png" alt="Júlia Lins">
+        </div>
+        <h3>Júlia Lins</h3>
+        <div class="info" :class="{'visible': isInfoVisible.julia}">
+          <div class="popup-content">
+            <img class="popup-img" src="../../img/Julia.png" alt="Júlia Lins">
+            <h4>Júlia Lins</h4>
+            <p><strong>Idade:</strong> 18 Anos</p>
+            <p>
+              Sou apaixonada por ouvir música, mergulhar em jogos e, no meu tempo livre, adoro sair com pessoas que fazem 
+              meu dia mais especial. Esses momentos fazem o equilíbrio perfeito entre diversão e conexão.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <div 
+          class="circle" 
+          @mouseover="showInfo('nicole')" 
+          @mouseleave="hideInfo('nicole')">
+          <img src="../../img/nicole.png" alt="Nicole Oliveira">
+        </div>
+        <h3>Nicole Oliveira</h3>
+        <div class="info" :class="{'visible': isInfoVisible.nicole}">
+          <div class="popup-content">
+            <img class="popup-img" src="../../img/nicole.png" alt="Nicole Oliveira">
+            <h4>Nicole Oliveira</h4>
+            <p><strong>Idade:</strong> 17 Anos</p>
+            <p>
+              Adora ler livros principalmente fantasia, suspense e romance. Gosto de ouvir música, cozinhar, fazer artesanatos, costurar 
+              e sempre que posso gosto de sair com as pessoas especiais que tenho em minha vida.
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
   </body>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      isInfoVisible: {
+        clara: false,
+        julia: false,
+        nicole: false
+      }
+    };
+  },
+  methods: {
+    showInfo(person) {
+      this.isInfoVisible[person] = true;
+    },
+
+    hideInfo(person) {
+      this.isInfoVisible[person] = false;
+    }
+  }
+};
+</script>
+
 <style scoped>
-body {
+body{
   background-color: #A8D1E7;
+  /*padding: 0;*/
+  /*margin: 0;*/
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+  top: -20px;
+  left: -20px;
+  right: -20px;
 }
 
 .header {
@@ -83,7 +136,7 @@ body {
   justify-content: space-between;
   background-image: url(../../img/image.png);
   background-size: cover;
-  background-position: center;
+  background-position: center; 
   height: 100vh;
   color: #A8D1E7;
   margin-top: 0;
@@ -91,13 +144,17 @@ body {
 }
 
 .logo img {
+  color: #C191B2;
   height: 30px;
+  top: -250px;
+  position: relative;
+ 
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   gap: 20px;
   margin-top: -200px;
 }
@@ -108,6 +165,7 @@ nav ul li a {
   color: #d1a3b8;
   text-decoration: none;
   transition: color 0.3s ease;
+  padding-left: 20px;
 }
 
 nav ul li a:hover {
@@ -122,70 +180,108 @@ nav ul li a:hover {
   right: 20px;
 }
 
+nav ul li a .icon img {
+  margin-left: 25px;
+  margin-top: -50px;
+  color: #C191B2;
+  height: 30px;
+}
+
 .about-container {
-  background-color: #ffffff;
+  background-color: #a8d1e7e8;
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 80%;
   max-width: 800px;
-  margin-top: 50px;
+  margin: 50px auto;
+  text-align: center;
+  margin-top: -400px;
 }
 
-.about-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 30px;
-}
-
-.about-text {
-  width: 60%;
-}
-
-.about-text h2 {
+h1 {
+  font-size: 2.5rem;
   color: #C191B2;
-  font-size: 1.5rem;
-  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
-.about-text p {
-  color: #666;
-  font-size: 1rem;
-  line-height: 1.6;
+.team {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 40px; 
+  margin-top: 100px;
 }
 
-.about-text ul {
+.team-member {
+  position: relative;
+  width: 150px;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #F2A2C3; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h3 {
   margin-top: 10px;
-  list-style-type: disc;
-  padding-left: 20px;
+  font-size: 1.2rem;
+  color: #C191B2;
 }
 
-.about-image {
-  width: 30%;
+.info {
+  display: none;
+  position: absolute;
+  top: -190px; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(242, 162, 195, 0.9); 
+  padding: 20px;
+  border-radius: 8px;
+  width: 220px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.popup-content {
   text-align: center;
 }
 
-.about-image img {
-  width: 100%;
-  max-width: 350px;
-  border-radius: 8px;
+.popup-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.info.visible {
+  display: block;
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
-  .about-content {
+  .team {
     flex-direction: column;
-    text-align: center;
+    align-items: center;
   }
 
-  .about-text {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .about-image {
-    width: 100%;
+  .team-member {
+    margin-bottom: 30px;
   }
 }
 </style>

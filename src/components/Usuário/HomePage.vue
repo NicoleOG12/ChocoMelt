@@ -84,8 +84,10 @@ export default {
 </script>
 
 <style scoped>
-body {
+body{
   background-color: #A8D1E7;
+  /*padding: 0;*/
+  /*margin: 0;*/
   position: absolute;
   top: -20px;
   left: -20px;
@@ -98,7 +100,7 @@ body {
   justify-content: space-between;
   background-image: url(../../img/image.png);
   background-size: cover;
-  background-position: center;
+  background-position: center; 
   height: 100vh;
   color: #A8D1E7;
   margin-top: 0;
@@ -110,12 +112,13 @@ body {
   height: 30px;
   top: -250px;
   position: relative;
+ 
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   gap: 20px;
   margin-top: -200px;
 }
@@ -139,6 +142,13 @@ nav ul li a:hover {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+nav ul li a .icon img {
+  margin-left: 25px;
+  margin-top: -50px;
+  color: #C191B2;
+  height: 30px;
 }
 
 #promocoes {

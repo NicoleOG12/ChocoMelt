@@ -82,7 +82,7 @@
   </script>
   
   
-  <style>
+  <style scoped>
  /* Configuração Geral */
 body {
   font-family: "Quicksand", sans-serif;

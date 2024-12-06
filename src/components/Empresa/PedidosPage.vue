@@ -8,22 +8,20 @@
 
   <body>
   <div class="page-container">
-    <!-- Barra Superior -->
+
     <header class="header">
       <nav class="navbar">
-          <router-link to="/HomePage">Home</router-link>
-          <a href="#">Produtos</a>
-          <a href="#">Contato</a>
-          <a href="#">Sobre</a>
+          <router-link to="/AdicionarProdutos">Adicionar Produtos</router-link>
+          <a href="/PromocoesPage">Promoções	</a>
+          <a href="/EditarProdutos">Editar Produtos</a>
+          <a href="/PedidosPage">Pedidos </a>
       </nav>
   </header>
-    <!-- Barra de Navegação -->
     <nav class="filter-nav">
 
       
     </nav>
     <h1 class="title">Pedidos</h1>
-    <!-- Tabela -->
     <div class="table-container">
       <table class="order-table">
         <thead>
@@ -82,8 +80,7 @@
   </script>
   
   
-  <style scoped>
- /* Configuração Geral */
+<style scoped>
 body {
   font-family: "Quicksand", sans-serif;
   margin: 0;
@@ -98,7 +95,6 @@ body {
   height: 100vh;
 }
 
-/* Barra Superior */
 .header{
   position: fixed;
   top: 0;

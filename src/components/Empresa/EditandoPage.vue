@@ -2,7 +2,7 @@
   <body>
     <header class="header">
       <div class="logo">
-        <img src="../../img/Logo.png" alt="Usuário">
+        <img src="../../img/Logo.png" alt="Usuário" />
       </div>
       <nav class="nav">
         <ul>
@@ -13,48 +13,46 @@
         </ul>
       </nav>
     </header>
-    
+
     <div class="add-product-form">
       <h2>Editar Produto</h2><br>
-  
+
       <form @submit.prevent="updateProduct">
-  
         <div class="form-group">
           <label for="nome">Nome</label>
           <input v-model="product.Nome" type="text" id="nome" required />
         </div><br>
-  
+
         <div class="form-group">
           <label for="foto">Foto</label>
           <input @change="handleFileUpload" type="file" id="foto" />
           <p v-if="product.Foto">Imagem selecionada: {{ product.Foto.name }}</p>
         </div><br>
-  
+
         <div class="form-group">
           <label for="categoria">Categoria</label>
           <input v-model="product.Categoria" type="text" id="categoria" required />
         </div><br>
-  
+
         <div class="form-group">
           <label for="detalhes">Descrição</label>
           <textarea v-model="product.Descricao" id="detalhes" required></textarea>
         </div><br>
-  
+
         <div class="form-group">
           <label for="peso">Peso</label>
           <input v-model="product.Peso" type="text" id="peso" required />
         </div><br>
-  
+
         <div class="form-group">
           <label for="preco">Preço</label>
           <input v-model="product.Preco" type="text" id="preco" required />
         </div><br><br>
-        
+
         <div class="button-group">
           <button type="submit">Salvar Alterações</button><br><br>
           <button type="button" @click="deleteProduct">Excluir Produto</button>
-      </div> 
-      
+        </div>
       </form>
     </div>
   </body>
@@ -68,13 +66,13 @@ export default {
     return {
       product: {
         Nome: "",
-        Foto: null,     
-        Categoria: "", 
-        Descricao: "",      
-        Peso: "",       
-        Preco: "",      
+        Foto: null,
+        Categoria: "",
+        Descricao: "",
+        Peso: "",
+        Preco: "",
       },
-      productId: null, 
+      productId: null,
     };
   },
   async created() {
@@ -90,13 +88,17 @@ export default {
         const db = getFirestore();
         const docRef = doc(db, "Produtos", this.productId);
         const docSnap = await getDoc(docRef);
-        
+
+        console.log("docSnap:", docSnap); 
+
         if (docSnap.exists()) {
           this.product = docSnap.data(); 
+          console.log("Produto carregado:", this.product);
         } else {
           alert("Produto não encontrado!");
         }
       } catch (error) {
+        console.error("Erro ao carregar dados do produto: ", error);
         alert("Erro ao carregar dados do produto: " + error.message);
       }
     },
@@ -108,7 +110,7 @@ export default {
         
         await updateDoc(docRef, {
           Nome: this.product.Nome,
-          Foto: this.product.Foto ? this.product.Foto.name : this.product.Foto, 
+          Foto: this.product.Foto ? this.product.Foto.name : this.product.Foto,
           Descricao: this.product.Descricao,
           Peso: this.product.Peso,
           Preco: this.product.Preco,
@@ -124,11 +126,11 @@ export default {
       try {
         const db = getFirestore();
         const docRef = doc(db, "Produtos", this.productId);
-        
+
         await deleteDoc(docRef);
         alert("Produto excluído com sucesso!");
 
-        this.$router.push("/Produtos");
+        this.$router.push("AdicionarProdutos"); 
       } catch (error) {
         alert("Erro ao excluir produto: " + error.message);
       }
@@ -159,7 +161,7 @@ body {
   justify-content: space-between;
   background-image: url(../../img/image.png);
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   height: 100vh;
   color: #A8D1E7;
   margin-top: 0;
@@ -176,7 +178,7 @@ body {
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   gap: 20px;
   margin-top: -200px;
 }
@@ -247,10 +249,10 @@ button:hover {
 }
 
 .button-group {
-display: flex;
-gap: 10px; 
-justify-content: center; 
-margin-top: 20px; 
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .form-group input:hover,
@@ -262,7 +264,7 @@ margin-top: 20px;
   .header {
     flex-direction: column;
     text-align: center;
-    justify-content: center; 
+    justify-content: center;
   }
 }
 </style>

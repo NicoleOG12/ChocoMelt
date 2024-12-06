@@ -8,7 +8,7 @@
   
       <header class="header">
         <nav class="navbar">
-          <router-link to="/Login">        
+          <router-link to="/Sobre Nós">        
           <a href="#">Sobre nós</a>
         </router-link>
   

@@ -74,10 +74,10 @@ const routes = [
         props: route => ({ id: route.params.id })
     },
     {
-        path: "/EditandoPage",
+        path: "/EditandoPage/:id",
         name: "EditandoPage",
         component: EditandoPage,
-        props: route => ({ id: route.params.id })
+        props: true
     },
     {
         path: "/EditarProdutos",

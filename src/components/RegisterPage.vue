@@ -11,15 +11,7 @@
         </div>
   
         <div class="input-wrapper">
-          <input v-model="cpf" placeholder="CPF" type="text" class="input" />
-        </div>
-  
-        <div class="input-wrapper">
           <input v-model="email" placeholder="Email" type="email" class="input" />
-        </div>
-  
-        <div class="input-wrapper">
-          <input v-model="phone" placeholder="Telefone" type="text" class="input" />
         </div>
   
         <div class="input-wrapper">
@@ -54,9 +46,7 @@ export default {
   data() {
     return {
       name: "",
-      cpf: "",
       email: "",
-      phone: "",
       birthDate: "",
       password: "",
       confirmPassword: "",
@@ -76,9 +66,7 @@ export default {
 
         await setDoc(doc(firestore, "Usuário", user.uid), {
           nome: this.name,
-          cpf: this.cpf,
           email: this.email,
-          telefone: this.phone,
           data_nascimento: this.birthDate,
           userType: "user", 
         });
@@ -102,7 +90,7 @@ export default {
 }
 
 .group {
-  height: 870px;
+  height: 740px;
   width: 500px;
   background-color: #A8D1E7;
   border-radius: 25px;

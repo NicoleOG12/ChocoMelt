@@ -3,12 +3,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   
-  
-    <div id="app">
-  
-      <header class="header">
-        <nav class="navbar">
-          <router-link to="/Sobre Nós">        
+  <div id="app">
+    <header class="header">
+      <nav class="navbar">
+        <router-link to="/Sobre Nós">        
           <a href="#">Sobre nós</a>
         </router-link>
   
@@ -17,10 +15,8 @@
   
   
       <main class="main-content">
-        <!-- Círculo Rosa -->
         <div class="circle"></div>
   
-   
         <div class="intro">
           <h2>ChocoMelt</h2>
           
@@ -29,29 +25,27 @@
           Começar
         </button>
         </router-link>
-  
-        </div>
-  
-  
+      </div>
+
         <div class="desserts-container">
           <div class="dessert-card" style="top: 30px; left: 49%;">
             <img class="images" :src="require('../assets/cupcakes.png')"/>
             <h3>Cupcakes</h3>
           </div>
-          <div class="dessert-card" style="top: 140px; left: 25%;">
-            <img class="images" style="left: 0%; height: 200px; width: 200px;" :src="require('../assets/boloabertura.png')"/>
+          <div class="dessert-card" style="top: 140px; left: 28%;">
+            <img class="images" style="left: 0%; height: 150px; width: 150px;" :src="require('../assets/boloabertura.png')"/>
             <h3 class="bolo">Bolos</h3>
           </div>
-          <div class="dessert-card" style="top: 140px; left: 73%;">
-            <img class="images" style="left: 0%; top: 15%; height: 140px; width: 190px;" :src="require('../assets/tortaabertura.png')"/>
+          <div class="dessert-card" style="top: 140px; left: 70%;">
+            <img class="images" style="left: 0%; top: 15%; height: 110px; width: 140px;" :src="require('../assets/tortaabertura.png')"/>
             <h3 class="torta">Torta</h3>
           </div>
-          <div class="dessert-card" style="top: 360px; left: 37%;">
-            <img class="images" style="left: 0%; top: 10%; height: 180px; width: 180px;" :src="require('../assets/mousse.png')"/>
+          <div class="dessert-card" style="top: 345px; left: 38%;">
+            <img class="images" style="left: 0%; top: 10%; height: 140px; width: 140px;" :src="require('../assets/mousse.png')"/>
             <h3 class="mousse">Mousse</h3>
           </div>
-          <div class="dessert-card" style="top: 360px; left: 62%;">
-            <img class="images" style="left: 0%; top: 10%; height: 180px; width: 180px;" :src="require('../assets/alfajor.png')"/>
+          <div class="dessert-card" style="top: 345px; left: 60%;">
+            <img class="images" style="left: 0%; top: 10%; height: 140px; width: 140px;" :src="require('../assets/alfajor.png')"/>
             <h3 class="mousse">Alfajor</h3>
           </div>
         </div>
@@ -157,8 +151,8 @@
   
   .desserts-container {
     position: absolute;
-    top: 0;
-    right: 70px;
+    top: -10px;
+    right: 40px;
     width: 70%;
     height: 100%;
     border-width: 1px;
@@ -172,10 +166,10 @@
     border: 1px solid rgb(192, 142, 142);
     padding: 5px;
     border-radius: 50%;
-    width: 250px;
+    width: 200px;
     right: 50%;
     transition: all 1000ms;
-    height: 250px; 
+    height: 200px; 
   
   }
   
@@ -203,14 +197,14 @@
   }
 
   .dessert-card .torta {
-    margin-top: 50px;
+    margin-top: 45px;
     font-size: 1rem;
     color: #ff4d4d;
     font-weight: bold;
   }
 
   .dessert-card .mousse {
-    margin-top: 25px;
+    margin-top: 20px;
     font-size: 1rem;
     color: #ff4d4d;
     font-weight: bold;

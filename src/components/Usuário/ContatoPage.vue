@@ -110,7 +110,6 @@ body{
   height: 30px;
   top: -250px;
   position: relative;
- 
 }
 
 nav ul {
@@ -144,7 +143,7 @@ nav ul li a:hover {
 
 nav ul li a .icon img {
   margin-left: 25px;
-  margin-top: -50px;
+  margin-top: -40px;
   color: #C191B2;
   height: 30px;
 }
@@ -157,7 +156,7 @@ nav ul li a .icon img {
   width: 1000px;
   margin-left: 150px;
   margin-right: 150px;
-  margin-top: -150px;
+  margin-top: -300px;
 }
 
 .contact-card {

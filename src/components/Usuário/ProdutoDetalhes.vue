@@ -1,7 +1,15 @@
 <template>
   <body>
-    <div class="icons">
-      <img src="../../img/carrinho.png" alt="Carrinho">
+    <router-link to="/Carrinho">
+      <div class="icons"><img src="../../img/carrinho.png" alt="Carrinho" /></div>
+    </router-link>
+
+    <div v-if="showPopup" class="popup">
+      {{ popupMessage }}
+    </div>
+
+    <div v-if="showBuyNowPopup" class="popup2">
+      {{ buyNowMessage }}
     </div>
 
     <div v-if="!product" class="loading">
@@ -24,7 +32,6 @@
         <button @click="buyNow" class="btn buy-now">Comprar Agora</button>
       </div>
     </div>
-
   </body>
 </template>
 
@@ -35,7 +42,11 @@ import { getAuth } from 'firebase/auth';
 export default {
   data() {
     return {
-      product: null, 
+      product: null,
+      showPopup: false,
+      popupMessage: '',
+      showBuyNowPopup: false,
+      buyNowMessage: '',
     };
   },
   mounted() {
@@ -61,11 +72,27 @@ export default {
         this.product = null;
       }
     },
+
+    showTemporaryPopup(message) {
+      this.popupMessage = message;
+      this.showPopup = true;
+      setTimeout(() => {
+        this.showPopup = false;
+      }, 3000);
+    },
     
+    showBuyNowPopupMessage(message) {
+      this.buyNowMessage = message;
+      this.showBuyNowPopup = true;
+      setTimeout(() => {
+        this.showBuyNowPopup = false;
+      }, 3000);
+    },
+
     async addToCart() {
       if (this.product && this.product.id) {
         try {
-          const user = getAuth().currentUser; 
+          const user = getAuth().currentUser;
 
           if (user) {
             const cartItem = {
@@ -77,26 +104,25 @@ export default {
               createdAt: new Date(),
             };
 
-            console.log('Adicionando ao carrinho:', cartItem);
-            
             await addDoc(collection(firestore, 'Carrinho'), cartItem);
-            
-            console.log('Produto adicionado ao carrinho do Firebase:', cartItem);
+            this.showTemporaryPopup('Produto adicionado ao carrinho!');
           } else {
-            console.log('Usuário não autenticado');
+            this.showTemporaryPopup('Você precisa estar logado para adicionar ao carrinho.');
           }
         } catch (error) {
           console.error('Erro ao adicionar ao carrinho:', error);
+          this.showTemporaryPopup('Erro ao adicionar ao carrinho.');
         }
       } else {
-        console.log('Produto ou ID do produto não está definido');
+        this.showTemporaryPopup('Produto não encontrado.');
       }
     },
 
     buyNow() {
-      if (this.product) {
-        console.log('Iniciando a compra do produto:', this.product);
-        this.$router.push({ name: 'Checkout' }); 
+      if (this.product && this.product.id) {
+        this.showBuyNowPopupMessage('Compra realizada com sucesso!');
+      } else {
+        this.showBuyNowPopupMessage('Produto não encontrado para comprar.');
       }
     },
   },
@@ -111,7 +137,6 @@ body {
   left: -20px;
   right: -20px;
   height: 100vh;
-
   display: flex;  
   justify-content: flex-start; 
   align-items: flex-start;
@@ -148,7 +173,7 @@ nav ul li a .icon img {
   border-radius: 8px;
   margin-bottom: 20px;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 40px;
 }
 
 .cards {
@@ -201,5 +226,43 @@ nav ul li a .icon img {
 
 .buy-now:hover {
   background-color: #6f92a3;
+}
+
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #C191B2;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  z-index: 9999;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.popup2 {
+  position: fixed;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  background-color: #96bfd4;
+  color: white;
+  padding: 30px 60px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  font-size: 20px;
+  z-index: 9999;
+  animation: fadeInOut 3s ease-in-out;
+  width: 300px;
+  text-align: center;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
 }
 </style>

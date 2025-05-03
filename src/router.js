@@ -12,7 +12,7 @@ import AdicionarProdutos from "./components/Empresa/AdicionarProdutos.vue";
 import EditandoPage from "./components/Empresa/EditandoPage.vue";
 import EditarProdutos from "./components/Empresa/EditarProdutos.vue";
 import PedidosPage from "./components/Empresa/PedidosPage.vue";
-import PromocoesPage from "./components/Empresa/PromocoesPaage.vue";
+import PromocoesPage from "./components/Empresa/PromocoesPage.vue";
 
 
 const routes = [
@@ -91,11 +91,11 @@ const routes = [
         component: PedidosPage
     },
     {
-        path: "/PromoçõesPage",
-        name: "PromoçõesPage",
+        path: "/PromocoesPage",
+        name: "PromocoesPage",
         component: PromocoesPage,
         props: route => ({ id: route.params.id })
-    }
+    },
 
 ];
 

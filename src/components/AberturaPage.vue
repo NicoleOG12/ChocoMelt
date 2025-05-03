@@ -38,21 +38,21 @@
             <img class="images" :src="require('../assets/cupcakes.png')"/>
             <h3>Cupcakes</h3>
           </div>
-          <div class="dessert-card" style="top: 110px; left: 25%;">
-            <img class="images" :src="require('../assets/cupcakes.png')"/>
-            <h3>Cupcakes</h3>
+          <div class="dessert-card" style="top: 140px; left: 25%;">
+            <img class="images" style="left: 0%; height: 200px; width: 200px;" :src="require('../assets/boloabertura.png')"/>
+            <h3 class="bolo">Bolos</h3>
           </div>
-          <div class="dessert-card" style="top: 110px; left: 74%;">
-            <img class="images" :src="require('../assets/cupcakes.png')"/>
-            <h3>Cupcakes</h3>
+          <div class="dessert-card" style="top: 140px; left: 73%;">
+            <img class="images" style="left: 0%; top: 15%; height: 140px; width: 190px;" :src="require('../assets/tortaabertura.png')"/>
+            <h3 class="torta">Torta</h3>
           </div>
           <div class="dessert-card" style="top: 360px; left: 37%;">
-            <img class="images" :src="require('../assets/cupcakes.png')"/>
-            <h3>Cupcakes</h3>
+            <img class="images" style="left: 0%; top: 10%; height: 180px; width: 180px;" :src="require('../assets/mousse.png')"/>
+            <h3 class="mousse">Mousse</h3>
           </div>
           <div class="dessert-card" style="top: 360px; left: 62%;">
-            <img class="images" :src="require('../assets/cupcakes.png')"/>
-            <h3>Cupcakes</h3>
+            <img class="images" style="left: 0%; top: 10%; height: 180px; width: 180px;" :src="require('../assets/alfajor.png')"/>
+            <h3 class="mousse">Alfajor</h3>
           </div>
         </div>
       </main>
@@ -68,9 +68,9 @@
   #app {
     font-family: 'Poppins', sans-serif;
     color: #333;
-    background-color: #e8f7ff;
+    background-color: #A8D1E7;
     position: relative;
-    height: 100vh;
+    height: 110vh;
   }
   
   .images{
@@ -78,14 +78,13 @@
     position: relative;
   }
   
-  
   .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 25px 12.5%;
-    background-color: #d1a3b8;
+    background-color: #C191B2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,8 +100,6 @@
     font-weight: 'bold';
   }
   
-    
-  
   .circle {
     position: absolute;
     top: 50px;
@@ -115,7 +112,6 @@
     border-radius: 50%;
     z-index: 1;
   }
-  
   
   .main-content {
     position: relative;   
@@ -198,8 +194,27 @@
     color: #ff4d4d;
     font-weight: bold;
   }
-  
-  
+
+  .dessert-card .bolo {
+    margin-top: -10px;
+    font-size: 1rem;
+    color: #ff4d4d;
+    font-weight: bold;
+  }
+
+  .dessert-card .torta {
+    margin-top: 50px;
+    font-size: 1rem;
+    color: #ff4d4d;
+    font-weight: bold;
+  }
+
+  .dessert-card .mousse {
+    margin-top: 25px;
+    font-size: 1rem;
+    color: #ff4d4d;
+    font-weight: bold;
+  }
   
   .button {
     padding: 30px 50px;
@@ -209,12 +224,12 @@
     letter-spacing: 5px;
     text-transform: uppercase;
     cursor: pointer;
-    color: #af2c2c;
+    color: #C191B2;
     transition: all 1000ms;
     font-size: 15px;
     position: relative;
     overflow: hidden;
-    outline: 2px solid #af352c;
+    outline: 2px solid #C191B2;
     left: 30%;
     bottom: 50%;
     background-color: #e8f7ff;
@@ -223,8 +238,8 @@
   button:hover {
     color: #ffffff;
     transform: scale(1.1);
-    outline: 2px solid #8f3434;
-    box-shadow: 4px 5px 17px -4px #912626;
+    outline: 2px solid #C191B2;
+    box-shadow: 4px 5px 17px -4px #C191B2;
   }
   
   button::before {
@@ -234,7 +249,7 @@
     top: 0;
     width: 0;
     height: 100%;
-    background-color: #965050;
+    background-color: #C191B2;
     transform: skewX(45deg);
     z-index: -1;
     transition: width 1000ms;

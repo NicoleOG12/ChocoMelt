@@ -1,41 +1,45 @@
 <template>
-  <div class="group">
-    <div class="group2">
-      <h1 class="title" style="color: blue; top: 40px; position: relative;">Registro</h1>
+  <div class="container">
+    <div class="group">
+      <div class="group2">
+        <img src="../img/image.png" alt="Imagem do formulário" class="form-image" />
 
-      <div style="margin-bottom: 20px; top: 70px; position: relative;">
-        <input v-model="name" placeholder="Nome Completo" type="text" class="input" />
-      </div>
+        <h1 class="title">Cadastro</h1>
 
-      <div style="margin-bottom: 20px; top: 70px; position: relative;">
-        <input v-model="cpf" placeholder="CPF" type="text" class="input" />
-      </div>
-
-      <div style="margin-bottom: 20px; top: 70px; position: relative;">
-        <input v-model="email" placeholder="Email" type="email" class="input" />
-      </div>
-
-      <div style="position: relative; margin-bottom: 20px; top: 70px;">
-        <input v-model="phone" placeholder="Telefone" type="text" class="input" />
-      </div>
-
-      <div style="position: relative; margin-bottom: 20px; top: 70px;">
-        <input v-model="birthDate" placeholder="Data de Nascimento" type="date" class="input" />
-      </div>
-
-      <div style="position: relative; margin-bottom: 20px; top: 70px;">
-        <input v-model="password" placeholder="Senha" type="password" class="input" />
-      </div>
-
-      <div style="position: relative; margin-bottom: 20px; top: 70px;">
-        <input v-model="confirmPassword" placeholder="Confirmar Senha" type="password" class="input" />
-      </div>
-
-      <button @click="register" style="top: 80px; position: relative;">Criar Conta</button>
-
-      <div style="position: relative; top: 100px;">
-        <p style="color: black; top: 0px; position: relative;">Já tem uma conta?</p>
-        <router-link to="/Login" style="color: blue; text-decoration: underline;">Entre aqui</router-link>
+        <div class="input-wrapper">
+          <input v-model="name" placeholder="Nome Completo" type="text" class="input" />
+        </div>
+  
+        <div class="input-wrapper">
+          <input v-model="cpf" placeholder="CPF" type="text" class="input" />
+        </div>
+  
+        <div class="input-wrapper">
+          <input v-model="email" placeholder="Email" type="email" class="input" />
+        </div>
+  
+        <div class="input-wrapper">
+          <input v-model="phone" placeholder="Telefone" type="text" class="input" />
+        </div>
+  
+        <div class="input-wrapper">
+          <input v-model="birthDate" placeholder="Data de Nascimento" type="date" class="input" />
+        </div>
+  
+        <div class="input-wrapper">
+          <input v-model="password" placeholder="Senha" type="password" class="input" />
+        </div>
+  
+        <div class="input-wrapper">
+          <input v-model="confirmPassword" placeholder="Confirmar Senha" type="password" class="input" />
+        </div>
+  
+        <button @click="register" style="top: 80px; position: relative;">Criar Conta</button>
+  
+        <div class="login-area">
+          <p>Já possui uma conta?</p>
+          <router-link to="/Login" class="login-link">Entre aqui</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -89,65 +93,58 @@ export default {
 </script>
 
 <style scoped>
-body {
-  background-image: url(../assets/steve-johnson-YtU1IdsS9Y8-unsplash.jpg);
-  background-repeat: no-repeat;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
 }
 
-button {
-  position: relative;
-  display: inline-block;
-  margin: 16px;
-  padding: 13px 35px;
-  text-align: center;
-  font-size: 18px;
-  letter-spacing: 1px;
-  text-decoration: none;
-  color: #3c00ff;
-  background: transparent;
-  cursor: pointer;
-  transition: ease-out 0.5s;
-  border: 2px solid #0400ff;
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 0 #bbb8e4;
+.group {
+  height: 870px;
+  width: 500px;
+  background-color: #A8D1E7;
+  border-radius: 25px;
+  border: solid 5px #C191B2;
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.219), 0 6px 6px 0 rgba(0, 0, 0, 0.151);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-button:hover {
-  color: white;
-  box-shadow: inset 0 -100px 0 0 #3c01ff;
-}
-
-button:active {
-  transform: scale(0.9);
+.group2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
   font-family: "Quicksand", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 500;
-  font-style: normal;
+  color: #C191B2;
+  font-size: 2rem;
+  margin-top: -5px;
+  margin-bottom: 30px;
 }
 
-.group {
+.input-wrapper {
+  margin-bottom: 20px;
+  width: 400px;
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: transparent;
-  width: 100%;
-  justify-content: center; 
-  align-items: center; 
-  gap: 20px;
+  justify-content: center;
 }
 
 .input {
   height: 40px;
-  padding: 0 6rem;
+  width: 80%;
   padding-left: 1.5rem;
   border: 2px solid transparent;
   border-radius: 8px;
-  outline: none;
   background-color: #f3f3f4;
-  color: #0d0c22;
+  color: #916282;
   transition: .3s ease;
 }
 
@@ -155,24 +152,59 @@ button:active {
   color: #9e9ea7;
 }
 
-.input:focus, input:hover {
+.input:focus,
+.input:hover {
   outline: none;
-  border-color: rgba(87, 76, 234, 0.4);
+  border-color: #C191B2;
   background-color: #fff;
   box-shadow: 0 0 0 4px rgba(55, 85, 255, 0.1);
 }
 
-.group2 {
-  background-color: #ffffff;
-  border-radius: 20px;
-  color:rgba(255, 255, 255, 0.8);
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.219), 0 6px 6px 0 rgba(0, 0, 0, 0.151);
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center; 
+button {
+  display: inline-block;
+  margin: 16px;
+  padding: 13px 35px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #C191B2;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #af88a3;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #ddaacd;
   position: relative;
-  padding-left: 90px;
-  padding-right: 90px;
-  padding-bottom: 160px;
+  margin-top: -50px;
+}
+
+button:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #C191B2;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+.login-area {
+  color: black;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+
+.login-link {
+  color: #C191B2;
+  text-decoration: underline;
+  margin-left: 4px;
+}
+
+.form-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  height: 200px;
+  margin-bottom: -28px;
 }
 </style>

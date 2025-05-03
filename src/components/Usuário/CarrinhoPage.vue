@@ -40,7 +40,7 @@
           <img :src="item.image" alt="Imagem do Produto" class="cart-item-image"/>
           <div class="cart-item-details">
             <h3>{{ item.name }}</h3>
-            <p><strong>Preço:</strong> {{ formatPrice(item.preco) }}</p>
+            <p><strong>Preço:</strong> {{ formatPrice(item.price) }}</p>
           </div>
 
           <div class="cart-item-footer">
@@ -62,7 +62,7 @@
         </div>
 
         <div class="total">
-          <p><strong>Total:</strong> {{ formatPrice(totalPreco) }}</p>
+          <p><strong>Total:</strong> {{ formatPrice(totalPrice) }}</p>
         </div>
 
         <div class="buttons-container">
@@ -130,12 +130,10 @@ export default {
           querySnapshot.forEach((doc) => {
             const item = doc.data();
 
-            const preco = item.preco;
-
             this.cartItems.push({
               id: doc.id,
               name: item.name,
-              preco: preco, 
+              price: item.price,  
               image: item.image,
               quantity: item.quantity || 1,
               selected: false, 
@@ -156,7 +154,7 @@ export default {
     calculateTotal() {
       this.totalPrice = this.cartItems.reduce((acc, item) => {
         if (item.selected) {
-          return acc + (item.preco * item.quantity); 
+          return acc + (item.price * item.quantity); 
         }
         return acc;
       }, 0);
@@ -230,8 +228,6 @@ export default {
 <style scoped>
 body{
   background-color: #A8D1E7;
-  /*padding: 0;*/
-  /*margin: 0;*/
   position: absolute;
   top: -20px;
   left: -20px;
@@ -244,25 +240,25 @@ body{
   justify-content: space-between;
   background-image: url(../../img/image.png);
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   height: 100vh;
-  color: #A8D1E7;
+  color: #a8d1e7;
   margin-top: 0;
   padding: 0 40px;
+  margin-top: -0px;
 }
 
 .logo img {
-  color: #C191B2;
+  color: #c191b2;
   height: 30px;
   top: -250px;
   position: relative;
- 
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   gap: 20px;
   margin-top: -200px;
 }
@@ -281,7 +277,7 @@ nav ul li a:hover {
 }
 
 .icons img {
-  color: #C191B2;
+  color: #c191b2;
   height: 40px;
   position: absolute;
   top: 20px;
@@ -291,7 +287,7 @@ nav ul li a:hover {
 nav ul li a .icon img {
   margin-left: 25px;
   margin-top: -50px;
-  color: #C191B2;
+  color: #c191b2;
   height: 30px;
 }
 

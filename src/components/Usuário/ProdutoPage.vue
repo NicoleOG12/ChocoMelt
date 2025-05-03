@@ -17,7 +17,6 @@
           </li>
         </ul>
       </nav>
-
       <router-link to="/Login">
         <div class="icons"><img src="../../img/user.png" alt="Usuario"></div>
       </router-link>
@@ -77,6 +76,7 @@ export default {
   methods: {
     addToCart(product) {
       this.cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(this.cart));
       alert(`${product.name} foi adicionado ao carrinho!`);
     },
 
@@ -96,7 +96,7 @@ export default {
           });
         });
 
-        this.products = products; 
+        this.products = products;
       } catch (error) {
         console.error("Erro ao buscar os produtos: ", error);
       }
@@ -108,16 +108,17 @@ export default {
   },
   mounted() {
     this.fetchProducts(); 
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      this.cart = JSON.parse(savedCart);
+    }
   },
 };
 </script>
 
- 
 <style scoped>
-body{
+body {
   background-color: #A8D1E7;
-  /*padding: 0;*/
-  /*margin: 0;*/
   position: absolute;
   top: -20px;
   left: -20px;
@@ -142,7 +143,6 @@ body{
   height: 30px;
   top: -250px;
   position: relative;
- 
 }
 
 nav ul {
@@ -176,7 +176,7 @@ nav ul li a:hover {
 
 nav ul li a .icon img {
   margin-left: 25px;
-  margin-top: -50px;
+  margin-top: -40px;
   color: #C191B2;
   height: 30px;
 }
@@ -209,11 +209,6 @@ nav ul li a .icon img {
   cursor: pointer;
 }
 
-.search button:hover {
-  background-color: #d1a3b8;
-}
-
-
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -228,7 +223,6 @@ nav ul li a .icon img {
   border-radius: 8px;
   padding: 20px;
   background-color: #f9f9f900;
-  margin: 0px;
 }
 
 .circulo {
@@ -261,45 +255,18 @@ nav ul li a .icon img {
   cursor: pointer;
 }
 
-.product-card button:hover {
-  background: #d1a3b8;
-}
-
 h3 {
   color: #C191B2;
 }
 
-.cart {
-  padding: 20px;
-  background: #f1f1f1;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin: 20px;
-}
-
-.cart ul {
-  list-style: none;
-  padding: 0;
-}
-
-.cart li {
-  margin-bottom: 10px;
-}
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    text-align: center;
-    justify-content: center; 
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .products {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  }
+.cart-count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #ff0000;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 14px;
 }
 </style>

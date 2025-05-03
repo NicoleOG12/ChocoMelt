@@ -13,6 +13,7 @@ import EditandoPage from "./components/Empresa/EditandoPage.vue";
 import EditarProdutos from "./components/Empresa/EditarProdutos.vue";
 import PedidosPage from "./components/Empresa/PedidosPage.vue";
 import PromocoesPage from "./components/Empresa/PromocoesPage.vue";
+import EsqueceuSenha from "./components/EsqueceuSenha.vue";
 
 
 const routes = [
@@ -59,6 +60,12 @@ const routes = [
         path: "/Register",
         name: "Register",
         component: RegisterPage
+    },
+
+    {
+        path: "/EsqueceuSenha",
+        name: "EsqueceuSenha",
+        component: EsqueceuSenha
     },
 
     {

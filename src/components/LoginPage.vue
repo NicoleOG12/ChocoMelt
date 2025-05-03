@@ -14,7 +14,7 @@
           <input v-model="password" placeholder="Senha" type="password" class="input" />
         </div>
 
-        <router-link>
+        <router-link to="/EsqueceuSenha" >
           <p class="forgot-password">Esqueceu sua senha?</p>
         </router-link>
 
